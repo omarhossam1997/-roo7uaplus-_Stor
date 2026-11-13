@@ -81,7 +81,6 @@
 
     <!-- القسم الرئيسي (Hero Section) -->
     <section class="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24 px-4">
-        <!-- إضاءات خلفية جمالية -->
         <div class="absolute top-0 right-1/4 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl -z-10"></div>
         <div class="absolute bottom-0 left-1/4 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl -z-10"></div>
 
@@ -105,7 +104,6 @@
                         تصفح العروض
                     </a>
                 </div>
-                <!-- إحصائيات ثقة سريعة -->
                 <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-800/80 max-w-md mx-auto lg:mx-0">
                     <div>
                         <p class="text-xl sm:text-2xl font-black text-cyan-400">+12,000</p>
@@ -122,14 +120,11 @@
                 </div>
             </div>
 
-            <!-- صورة العرض الرئيسية -->
             <div class="relative mx-auto w-full max-w-md lg:max-w-full">
                 <div class="glass-card p-4 rounded-3xl glow-effect">
                     <img src="https://placehold.co/600x480/111827/06b6d4?text=Smart+Tech+Gadgets+2026" 
                          alt="أحدث المنتجات الذكية" 
-                         class="w-full h-auto rounded-2xl object-cover shadow-2xl"
-                         onerror="this.src='https://placehold.co/600x480/1f2937/ffffff?text=Tech+Store'">
-                    <!-- بطاقة عائمة -->
+                         class="w-full h-auto rounded-2xl object-cover shadow-2xl">
                     <div class="mt-4 flex items-center justify-between bg-gray-900/90 p-3.5 rounded-2xl border border-gray-800">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center text-lg">
@@ -330,14 +325,12 @@
                     <p class="text-gray-400 text-sm">الدفع نقداً عند الاستلام بعد فتح الشحنة ومعاينة المنتج بالكامل</p>
                 </div>
 
-                <!-- رسالة تنبيه في حالة وجود خطأ في الإدخال -->
                 <div id="error-box" class="hidden mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/40 text-red-400 text-sm font-bold flex items-center gap-2">
                     <i class="fa-solid fa-circle-exclamation text-lg"></i>
                     <span id="error-text">يرجى التأكد من إدخال جميع البيانات بشكل صحيح.</span>
                 </div>
 
                 <form id="order-form" class="space-y-5">
-                    <!-- اختيار المنتج والكمية -->
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div class="sm:col-span-2">
                             <label class="block text-sm font-bold text-gray-300 mb-2">اختر المنتج المطلوب *</label>
@@ -358,7 +351,6 @@
                         </div>
                     </div>
 
-                    <!-- الاسم ورقم الموبايل -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">الاسم بالكامل *</label>
@@ -370,7 +362,6 @@
                         </div>
                     </div>
 
-                    <!-- المحافظة والعنوان -->
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">المحافظة *</label>
@@ -406,7 +397,6 @@
                         </div>
                     </div>
 
-                    <!-- ملخص الفاتورة التلقائي -->
                     <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-5 space-y-3">
                         <div class="flex justify-between text-sm text-gray-400">
                             <span>سعر المنتجات:</span>
@@ -425,7 +415,6 @@
                         </div>
                     </div>
 
-                    <!-- زر إرسال الطلب -->
                     <button type="submit" id="submit-btn" class="w-full tech-gradient glow-effect text-white font-black text-lg py-4 rounded-2xl transition transform hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-3 shadow-xl">
                         <i class="fa-solid fa-check-circle text-xl"></i>
                         <span>تأكيد الطلب الآن (الدفع عند الاستلام)</span>
@@ -438,7 +427,7 @@
         </div>
     </section>
 
-    <!-- الفوتر (تذييل الصفحة) -->
+    <!-- الفوتر -->
     <footer class="bg-gray-950 border-t border-gray-900 py-8 px-4 text-center text-gray-500 text-xs sm:text-sm">
         <div class="max-w-6xl mx-auto space-y-2">
             <p class="font-bold text-gray-300">تيك زون مصر - جميع الحقوق محفوظة © 2026</p>
@@ -476,20 +465,16 @@
         </div>
     </div>
 
-    <!-- كود الجافاسكريبت لإدارة الحسابات والربط المجاني -->
+    <!-- كود الجافاسكريبت المكتمل والجاهز للربط -->
     <script>
-        // =========================================================================
-        // إعدادات الربط المجاني (Google Apps Script Webhook أو Telegram Bot)
-        // ضع رابط Google Apps Script هنا لاستقبال الطلبات في Google Sheets مجاناً
-        // =========================================================================
-        const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbx8pZzSzTNv-QE5j0YcPer3KUYnOliKNZ37k-5OFfHFBl_hfVNxVkmOqauWAmnggXIBYg/exec"; 
+        // رابط جوجل شيت الخاص بك المضاف مسبقاً
+        const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbx8pZzSzTNv-QE5j0YcPer3KUYnOliKNZ37k-5OFfHFBl_hfVNxVkmOqauWAmnggXIBYg/exec";
 
-        // اختيار المنتج تلقائياً عند الضغط على زر "اطلب هذا المنتج" في الأعلى
         function selectProduct(productName, price) {
-            const selectEl = document.getElementById('product-select');
-            for (let i = 0; i < selectEl.options.length; i++) {
-                if (selectEl.options[i].getAttribute('data-name') === productName) {
-                    selectEl.selectedIndex = i;
+            const select = document.getElementById('product-select');
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].getAttribute('data-name') === productName) {
+                    select.selectedIndex = i;
                     break;
                 }
             }
@@ -497,142 +482,127 @@
             document.getElementById('order-section').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // تغيير الكمية (+ أو -)
-        function changeQty(delta) {
+        function changeQty(amount) {
             const qtyInput = document.getElementById('quantity');
-            let currentQty = parseInt(qtyInput.value);
-            let newQty = currentQty + delta;
-            if (newQty >= 1 && newQty <= 10) {
-                qtyInput.value = newQty;
-                calculateTotal();
-            }
+            let currentQty = parseInt(qtyInput.value) + amount;
+            if (currentQty < 1) currentQty = 1;
+            if (currentQty > 10) currentQty = 10;
+            qtyInput.value = currentQty;
+            calculateTotal();
         }
 
-        // حساب السعر الإجمالي والشحن تلقائياً
         function calculateTotal() {
-            const productPrice = parseFloat(document.getElementById('product-select').value);
+            const productSelect = document.getElementById('product-select');
+            const price = parseFloat(productSelect.value);
             const qty = parseInt(document.getElementById('quantity').value);
-            let shippingCost = parseFloat(document.getElementById('governorate').value);
+            const govSelect = document.getElementById('governorate');
+            let shipping = parseFloat(govSelect.value);
 
-            const subtotal = productPrice * qty;
-            const freeShippingBadge = document.getElementById('free-shipping-badge');
-
-            // تفعيل الشحن المجاني عند طلب قطعتين أو أكثر
+            const subtotal = price * qty;
+            
+            // شحن مجاني عند طلب قطعتين أو أكثر
+            let freeShipping = false;
             if (qty >= 2) {
-                shippingCost = 0;
-                freeShippingBadge.classList.remove('hidden');
-                document.getElementById('shipping-display').innerText = "مجاني (0 ج.م)";
-                document.getElementById('shipping-display').classList.add('text-emerald-400');
-            } else {
-                freeShippingBadge.classList.add('hidden');
-                document.getElementById('shipping-display').innerText = shippingCost + " ج.م";
-                document.getElementById('shipping-display').classList.remove('text-emerald-400');
+                shipping = 0;
+                freeShipping = true;
             }
 
-            const total = subtotal + shippingCost;
-            document.getElementById('subtotal-display').innerText = subtotal.toLocaleString() + " ج.م";
-            document.getElementById('total-display').innerText = total.toLocaleString() + " ج.م";
+            const total = subtotal + shipping;
 
-            return { subtotal, shippingCost, total };
+            document.getElementById('subtotal-display').innerText = subtotal + ' ج.م';
+            document.getElementById('shipping-display').innerText = freeShipping ? 'مجاناً (عرض قطعتين)' : shipping + ' ج.م';
+            
+            const freeBadge = document.getElementById('free-shipping-badge');
+            if (freeShipping) {
+                freeBadge.classList.remove('hidden');
+            } else {
+                freeBadge.classList.add('hidden');
+            }
+
+            document.getElementById('total-display').innerText = total + ' ج.م';
         }
 
-        // التحقق من صحة رقم الهاتف المصري (يبدأ بـ 010 أو 011 أو 012 أو 015 ويتكون من 11 رقم)
-        function isValidEgyptianPhone(phone) {
-            const regex = /^01[0125][0-9]{8}$/;
-            return regex.test(phone.trim());
-        }
-
-        // معالجة إرسال النموذج
-        document.getElementById('order-form').addEventListener('submit', async function(e) {
+        // إرسال البيانات عند الضغط على تأكيد الطلب
+        document.getElementById('order-form').addEventListener('submit', function(e) {
             e.preventDefault();
-
-            const errorBox = document.getElementById('error-box');
-            const errorText = document.getElementById('error-text');
-            errorBox.classList.add('hidden');
 
             const name = document.getElementById('customer-name').value.trim();
             const phone = document.getElementById('customer-phone').value.trim();
-            const govSelect = document.getElementById('governorate');
-            const governorate = govSelect.options[govSelect.selectedIndex].text.split(' (')[0];
             const address = document.getElementById('customer-address').value.trim();
-            const prodSelect = document.getElementById('product-select');
-            const productName = prodSelect.options[prodSelect.selectedIndex].getAttribute('data-name');
-            const qty = parseInt(document.getElementById('quantity').value);
-            const { total } = calculateTotal();
+            const productSelect = document.getElementById('product-select');
+            const productName = productSelect.options[productSelect.selectedIndex].getAttribute('data-name');
+            const qty = document.getElementById('quantity').value;
+            const govSelect = document.getElementById('governorate');
+            const govText = govSelect.options[govSelect.selectedIndex].text;
+            const totalText = document.getElementById('total-display').innerText;
 
-            // التحقق من صحة البيانات
-            if (name.length < 3) {
-                errorText.innerText = "يرجى إدخال الاسم بالكامل بشكل صحيح.";
+            const errorBox = document.getElementById('error-box');
+            const errorText = document.getElementById('error-text');
+
+            // التحقق من صحة رقم الموبايل المصري (11 رقم يبدأ بـ 01)
+            const phoneRegex = /^01[0125][0-9]{8}$/;
+            if (!phoneRegex.test(phone)) {
+                errorText.innerText = 'يرجى إدخال رقم موبايل مصري صحيح مكون من 11 رقماً (مثال: 01012345678)';
                 errorBox.classList.remove('hidden');
-                return;
-            }
-            if (!isValidEgyptianPhone(phone)) {
-                errorText.innerText = "يرجى إدخال رقم موبايل مصري صحيح مكون من 11 رقماً (مثال: 010xxxxxxxx).";
-                errorBox.classList.remove('hidden');
-                return;
-            }
-            if (address.length < 8) {
-                errorText.innerText = "يرجى كتابة العنوان بالتفصيل لتسهيل وصول المندوب إليك.";
-                errorBox.classList.remove('hidden');
+                document.getElementById('customer-phone').focus();
                 return;
             }
 
-            // تجهيز بيانات الطلب لإرسالها
-            const orderId = "TZ-" + Math.floor(100000 + Math.random() * 900000);
+            errorBox.classList.add('hidden');
+
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-2"></i> جاري تسجيل طلبك...';
+
             const orderData = {
-                orderId: orderId,
-                date: new Date().toLocaleString('ar-EG'),
                 name: name,
                 phone: phone,
-                governorate: governorate,
+                governorate: govText,
                 address: address,
                 product: productName,
                 quantity: qty,
-                totalPrice: total + " ج.م"
+                total: totalText
             };
 
-            const submitBtn = document.getElementById('submit-btn');
-            const originalBtnContent = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري تسجيل طلبك...';
-
-            // إرسال البيانات إلى Google Sheets (إذا تم وضع الرابط)
-            if (GOOGLE_SHEET_WEBHOOK_URL !== "") {
-                try {
-                    await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(orderData)
-                    });
-                } catch (err) {
-                    console.error("Webhook Error:", err);
-                }
-            }
-
-            // عرض نافذة تأكيد الطلب للعميل
-            setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnContent;
-
+            // إرسال البيانات إلى Google Sheets
+            fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderData)
+            }).then(() => {
+                const orderId = 'TZ-' + Math.floor(100000 + Math.random() * 900000);
+                
                 document.getElementById('modal-name').innerText = name;
                 document.getElementById('modal-order-id').innerText = orderId;
                 document.getElementById('modal-product').innerText = productName;
-                document.getElementById('modal-qty').innerText = qty + " قطعة";
-                document.getElementById('modal-total').innerText = total.toLocaleString() + " ج.م";
+                document.getElementById('modal-qty').innerText = qty;
+                document.getElementById('modal-total').innerText = totalText;
 
                 document.getElementById('success-modal').classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-check-circle text-xl"></i> <span>تأكيد الطلب الآن (الدفع عند الاستلام)</span>';
                 document.getElementById('order-form').reset();
                 calculateTotal();
-            }, 600);
+            }).catch(error => {
+                console.error('Error:', error);
+                errorText.innerText = 'حدث خطأ أثناء إرسال الطلب، يرجى المحاولة مرة أخرى.';
+                errorBox.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-check-circle text-xl"></i> <span>تأكيد الطلب الآن (الدفع عند الاستلام)</span>';
+            });
         });
 
         function closeModal() {
             document.getElementById('success-modal').classList.add('hidden');
         }
 
-        // تشغيل الحساب المبدئي عند تحميل الصفحة
-        window.onload = calculateTotal;
+        // حساب الأسعار عند التحميل لأول مرة
+        window.onload = function() {
+            calculateTotal();
+        };
     </script>
 </body>
 </html>
