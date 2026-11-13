@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تيك زون | أحدث الإلكترونيات والمنتجات الذكية في مصر</title>
+    <!-- استيراد خطوط جوجل العربية العصرية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- استيراد Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#090d16',
+                            card: '#111827',
+                            accent: '#3b82f6',
+                            glow: '#06b6d4',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #090d16;
+            color: #f3f4f6;
+            font-family: 'Cairo', sans-serif;
+        }
+        .tech-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 35px rgba(6, 182, 212, 0.45);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- شريط علوي للإعلان السريع -->
+    <div class="tech-gradient text-white text-center py-2 px-4 text-xs sm:text-sm font-bold tracking-wide">
+        <i class="fa-solid fa-bolt ml-1"></i> عرض لفترة محدودة: شحن مجاني عند طلب قطعتين أو أكثر + الدفع عند الاستلام والمعاينة!
+    </div>
+
+    <!-- الهيدر (شريط التنقل) -->
+    <header class="sticky top-0 z-40 glass-card border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 text-xl sm:text-2xl font-black tracking-tight text-white">
+                <span class="w-9 h-9 rounded-xl tech-gradient flex items-center justify-center text-white shadow-lg">
+                    <i class="fa-solid fa-microchip"></i>
+                </span>
+                <span>تيك<span class="text-cyan-400">زون</span></span>
+            </a>
+            <div class="flex items-center gap-3">
+                <a href="#products" class="hidden sm:inline-block text-gray-300 hover:text-cyan-400 text-sm font-semibold transition">المنتجات</a>
+                <a href="#features" class="hidden sm:inline-block text-gray-300 hover:text-cyan-400 text-sm font-semibold transition">مميزاتنا</a>
+                <a href="#order-section" class="tech-gradient hover:opacity-90 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-lg transition transform active:scale-95">
+                    اطلب الآن <i class="fa-solid fa-arrow-down mr-1"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي (Hero Section) -->
+    <section class="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24 px-4">
+        <!-- إضاءات خلفية جمالية -->
+        <div class="absolute top-0 right-1/4 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 left-1/4 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div class="text-center lg:text-right space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/80 border border-blue-500/30 text-cyan-400 text-xs sm:text-sm font-bold">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                    الأكثر مبيعاً في مصر لعام 2026
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+                    ارتقِ بتجربتك اليومية مع <span class="text-transparent bg-clip-text bg-gradient-to-l from-cyan-400 to-blue-500">أذكى الإلكترونيات</span> العصرية
+                </h1>
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    نقدم لك أقوى الأدوات الذكية المختارة بعناية لتسهيل حياتك وزيادة إنتاجيتك. جودة مضمونة، توصيل سريع لباب البيت في جميع محافظات مصر، و<strong class="text-white">المعاينة الكاملة قبل الدفع</strong>.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                    <a href="#order-section" class="tech-gradient glow-effect text-white font-extrabold text-base sm:text-lg px-8 py-4 rounded-2xl transition transform hover:-translate-y-1 text-center">
+                        <i class="fa-solid fa-cart-shopping ml-2"></i> اطلب منتجك الآن
+                    </a>
+                    <a href="#products" class="bg-gray-800/80 hover:bg-gray-800 border border-gray-700 text-white font-bold text-base sm:text-lg px-8 py-4 rounded-2xl transition text-center">
+                        تصفح العروض
+                    </a>
+                </div>
+                <!-- إحصائيات ثقة سريعة -->
+                <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-800/80 max-w-md mx-auto lg:mx-0">
+                    <div>
+                        <p class="text-xl sm:text-2xl font-black text-cyan-400">+12,000</p>
+                        <p class="text-xs text-gray-400">عميل سعيد في مصر</p>
+                    </div>
+                    <div>
+                        <p class="text-xl sm:text-2xl font-black text-cyan-400">4.9/5</p>
+                        <p class="text-xs text-gray-400">تقييم الجودة</p>
+                    </div>
+                    <div>
+                        <p class="text-xl sm:text-2xl font-black text-cyan-400">100%</p>
+                        <p class="text-xs text-gray-400">معاينة عند الاستلام</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- صورة العرض الرئيسية -->
+            <div class="relative mx-auto w-full max-w-md lg:max-w-full">
+                <div class="glass-card p-4 rounded-3xl glow-effect">
+                    <img src="https://placehold.co/600x480/111827/06b6d4?text=Smart+Tech+Gadgets+2026" 
+                         alt="أحدث المنتجات الذكية" 
+                         class="w-full h-auto rounded-2xl object-cover shadow-2xl"
+                         onerror="this.src='https://placehold.co/600x480/1f2937/ffffff?text=Tech+Store'">
+                    <!-- بطاقة عائمة -->
+                    <div class="mt-4 flex items-center justify-between bg-gray-900/90 p-3.5 rounded-2xl border border-gray-800">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-shield-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-white">ضمان استبدال فوري</p>
+                                <p class="text-xs text-gray-400">لمدة 14 يوماً ضد عيوب الصناعة</p>
+                            </div>
+                        </div>
+                        <span class="bg-red-500/20 text-red-400 border border-red-500/30 text-xs font-extrabold px-3 py-1 rounded-lg">
+                            خصم يصل لـ 45%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- شريط الضمانات والمميزات -->
+    <section id="features" class="py-10 px-4 bg-gray-900/50 border-y border-gray-800/80">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-base">الدفع عند الاستلام</h3>
+                    <p class="text-xs text-gray-400 mt-1">لا تدفع أي مليم إلا بعد استلام طلبك</p>
+                </div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-base">معاينة المنتج</h3>
+                    <p class="text-xs text-gray-400 mt-1">افتح الشحنة وتأكد من الجودة بنفسك</p>
+                </div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-base">شحن سريع للمحافظات</h3>
+                    <p class="text-xs text-gray-400 mt-1">توصيل خلال 24 إلى 72 ساعة فقط</p>
+                </div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-base">ضمان استبدال 14 يوم</h3>
+                    <p class="text-xs text-gray-400 mt-1">استبدال فوري بدون أي تعقيدات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات المميزة (Showcase) -->
+    <section id="products" class="py-16 px-4 max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+            <span class="text-cyan-400 font-bold text-sm tracking-wider uppercase">اختر منتجك المفضل</span>
+            <h2 class="text-2xl sm:text-4xl font-black text-white">أقوى عروض الإلكترونيات الذكية</h2>
+            <p class="text-gray-400 text-sm sm:text-base">منتجات مختارة بعناية تجمع بين السعر الاقتصادي والأداء الفائق</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- المنتج 1 -->
+            <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-2 border border-gray-800 hover:border-cyan-500/50">
+                <div>
+                    <div class="relative">
+                        <img src="https://placehold.co/400x300/1e293b/38bdf8?text=Pro+Earbuds+ANC" alt="سماعة بلوتوث برو" class="w-full h-48 object-cover">
+                        <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-lg shadow">وفر 40%</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="text-gray-400 mr-1">(340 تقييم)</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">سماعة بلوتوث Pro عازلة للضوضاء</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">صوت نقي محيطي، بطارية تدوم 24 ساعة، شاشة رقمية لمعرفة نسبة الشحن، ومقاومة للتعرق.</p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0 space-y-4">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-2xl font-black text-cyan-400">450 ج.م</span>
+                        <span class="text-sm text-gray-500 line-through">750 ج.م</span>
+                    </div>
+                    <button onclick="selectProduct('سماعة بلوتوث Pro عازلة للضوضاء', 450)" 
+                            class="w-full tech-gradient hover:opacity-90 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
+                        <span>اطلب هذا المنتج</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- المنتج 2 -->
+            <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-2 border border-gray-800 hover:border-cyan-500/50">
+                <div>
+                    <div class="relative">
+                        <img src="https://placehold.co/400x300/1e293b/22d3ee?text=Smart+Watch+Ultra" alt="ساعة ذكية ألترا" class="w-full h-48 object-cover">
+                        <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-lg shadow">الأكثر طلباً</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="text-gray-400 mr-1">(512 تقييم)</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">ساعة ذكية Smart Watch Ultra</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">شاشة AMOLED كاملة، إجراء واستقبال المكالمات، إشعارات الواتساب، وقياس نبضات القلب والخطوات.</p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0 space-y-4">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-2xl font-black text-cyan-400">690 ج.م</span>
+                        <span class="text-sm text-gray-500 line-through">1,150 ج.م</span>
+                    </div>
+                    <button onclick="selectProduct('ساعة ذكية Smart Watch Ultra', 690)" 
+                            class="w-full tech-gradient hover:opacity-90 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
+                        <span>اطلب هذا المنتج</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- المنتج 3 -->
+            <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-2 border border-gray-800 hover:border-cyan-500/50">
+                <div>
+                    <div class="relative">
+                        <img src="https://placehold.co/400x300/1e293b/818cf8?text=RGB+Smart+Lamp" alt="إضاءة ذكية RGB" class="w-full h-48 object-cover">
+                        <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-lg shadow">وفر 45%</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="text-gray-400 mr-1">(218 تقييم)</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">مصباح RGB الذكي + شاحن لاسلكي</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">إضاءة محيطية تتفاعل مع الموسيقى، شاحن سريع لاسلكي 15W للموبايل، وسماعة بلوتوث مدمجة.</p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0 space-y-4">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-2xl font-black text-cyan-400">550 ج.م</span>
+                        <span class="text-sm text-gray-500 line-through">990 ج.م</span>
+                    </div>
+                    <button onclick="selectProduct('مصباح RGB الذكي + شاحن لاسلكي', 550)" 
+                            class="w-full tech-gradient hover:opacity-90 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
+                        <span>اطلب هذا المنتج</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- المنتج 4 -->
+            <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between transition transform hover:-translate-y-2 border border-gray-800 hover:border-cyan-500/50">
+                <div>
+                    <div class="relative">
+                        <img src="https://placehold.co/400x300/1e293b/34d399?text=MagSafe+PowerBank" alt="باور بانك مغناطيسي" class="w-full h-48 object-cover">
+                        <span class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-extrabold px-2.5 py-1 rounded-lg shadow">جديد</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="text-gray-400 mr-1">(189 تقييم)</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">باور بانك مغناطيسي 10000mAh</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">يلتصق بظهر الهاتف لاسلكياً بدون أسلاك، حجم نحيف جداً للجيب، وشحن فائق السرعة PD.</p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0 space-y-4">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-2xl font-black text-cyan-400">620 ج.م</span>
+                        <span class="text-sm text-gray-500 line-through">950 ج.م</span>
+                    </div>
+                    <button onclick="selectProduct('باور بانك مغناطيسي 10000mAh', 620)" 
+                            class="w-full tech-gradient hover:opacity-90 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
+                        <span>اطلب هذا المنتج</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم نموذج الطلب السريع (Order Form) -->
+    <section id="order-section" class="py-16 px-4 bg-gradient-to-b from-gray-900/40 to-brand-dark border-t border-gray-800">
+        <div class="max-w-3xl mx-auto">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 glow-effect border border-cyan-500/30">
+                <div class="text-center mb-8 space-y-2">
+                    <span class="inline-block bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-bold px-3 py-1 rounded-full">
+                        خطوة واحدة تفصلك عن استلام طلبك
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white">سجل بياناتك لإتمام الطلب الآن</h2>
+                    <p class="text-gray-400 text-sm">الدفع نقداً عند الاستلام بعد فتح الشحنة ومعاينة المنتج بالكامل</p>
+                </div>
+
+                <!-- رسالة تنبيه في حالة وجود خطأ في الإدخال -->
+                <div id="error-box" class="hidden mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/40 text-red-400 text-sm font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-circle-exclamation text-lg"></i>
+                    <span id="error-text">يرجى التأكد من إدخال جميع البيانات بشكل صحيح.</span>
+                </div>
+
+                <form id="order-form" class="space-y-5">
+                    <!-- اختيار المنتج والكمية -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-bold text-gray-300 mb-2">اختر المنتج المطلوب *</label>
+                            <select id="product-select" onchange="calculateTotal()" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white font-semibold outline-none transition">
+                                <option value="450" data-name="سماعة بلوتوث Pro عازلة للضوضاء">سماعة بلوتوث Pro عازلة للضوضاء (450 ج.م)</option>
+                                <option value="690" data-name="ساعة ذكية Smart Watch Ultra">ساعة ذكية Smart Watch Ultra (690 ج.م)</option>
+                                <option value="550" data-name="مصباح RGB الذكي + شاحن لاسلكي">مصباح RGB الذكي + شاحن لاسلكي (550 ج.م)</option>
+                                <option value="620" data-name="باور بانك مغناطيسي 10000mAh">باور بانك مغناطيسي 10000mAh (620 ج.م)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-300 mb-2">الكمية *</label>
+                            <div class="flex items-center bg-gray-900 border border-gray-700 rounded-xl overflow-hidden">
+                                <button type="button" onclick="changeQty(-1)" class="px-4 py-3.5 text-cyan-400 hover:bg-gray-800 font-black transition">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="10" readonly class="w-full bg-transparent text-center text-white font-bold outline-none">
+                                <button type="button" onclick="changeQty(1)" class="px-4 py-3.5 text-cyan-400 hover:bg-gray-800 font-black transition">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الاسم ورقم الموبايل -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-300 mb-2">الاسم بالكامل *</label>
+                            <input type="text" id="customer-name" required placeholder="مثال: أحمد محمود محمد" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-300 mb-2">رقم الموبايل (يفضل واتساب) *</label>
+                            <input type="tel" id="customer-phone" required placeholder="01xxxxxxxxx" maxlength="11" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition text-left" dir="ltr">
+                        </div>
+                    </div>
+
+                    <!-- المحافظة والعنوان -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-300 mb-2">المحافظة *</label>
+                            <select id="governorate" onchange="calculateTotal()" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white font-semibold outline-none transition">
+                                <option value="50">القاهرة (شحن 50 ج.م)</option>
+                                <option value="50">الجيزة (شحن 50 ج.م)</option>
+                                <option value="60">الإسكندرية (شحن 60 ج.م)</option>
+                                <option value="65">الدقهلية (شحن 65 ج.م)</option>
+                                <option value="65">الشرقية (شحن 65 ج.م)</option>
+                                <option value="65">الغربية (شحن 65 ج.م)</option>
+                                <option value="65">المنوفية (شحن 65 ج.م)</option>
+                                <option value="65">القليوبية (شحن 65 ج.م)</option>
+                                <option value="65">البحيرة (شحن 65 ج.م)</option>
+                                <option value="65">كفر الشيخ (شحن 65 ج.م)</option>
+                                <option value="65">دمياط (شحن 65 ج.م)</option>
+                                <option value="70">بورسعيد (شحن 70 ج.م)</option>
+                                <option value="70">الإسماعيلية (شحن 70 ج.م)</option>
+                                <option value="70">السويس (شحن 70 ج.م)</option>
+                                <option value="75">الفيوم (شحن 75 ج.م)</option>
+                                <option value="75">بني سويف (شحن 75 ج.م)</option>
+                                <option value="75">المنيا (شحن 75 ج.م)</option>
+                                <option value="80">أسيوط (شحن 80 ج.م)</option>
+                                <option value="80">سوهاج (شحن 80 ج.م)</option>
+                                <option value="85">قنا (شحن 85 ج.م)</option>
+                                <option value="85">الأقصر (شحن 85 ج.م)</option>
+                                <option value="85">أسوان (شحن 85 ج.م)</option>
+                                <option value="90">البحر الأحمر / مطروح (شحن 90 ج.م)</option>
+                            </select>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-bold text-gray-300 mb-2">العنوان بالتفصيل (المدينة / الشارع / علامة مميزة) *</label>
+                            <input type="text" id="customer-address" required placeholder="مثال: مدينة نصر، شارع عباس العقاد، عمارة 15..." class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition">
+                        </div>
+                    </div>
+
+                    <!-- ملخص الفاتورة التلقائي -->
+                    <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-5 space-y-3">
+                        <div class="flex justify-between text-sm text-gray-400">
+                            <span>سعر المنتجات:</span>
+                            <span id="subtotal-display" class="font-bold text-white">450 ج.م</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-400">
+                            <span>مصاريف الشحن:</span>
+                            <span id="shipping-display" class="font-bold text-white">50 ج.م</span>
+                        </div>
+                        <div id="free-shipping-badge" class="hidden text-xs text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1.5 rounded-lg text-center">
+                            🎉 مبروك! حصلت على شحن مجاني لطلبك قطعتين أو أكثر!
+                        </div>
+                        <div class="border-t border-gray-800 pt-3 flex justify-between items-center">
+                            <span class="text-base font-extrabold text-white">الإجمالي المطلوب عند الاستلام:</span>
+                            <span id="total-display" class="text-2xl font-black text-cyan-400">500 ج.م</span>
+                        </div>
+                    </div>
+
+                    <!-- زر إرسال الطلب -->
+                    <button type="submit" id="submit-btn" class="w-full tech-gradient glow-effect text-white font-black text-lg py-4 rounded-2xl transition transform hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-3 shadow-xl">
+                        <i class="fa-solid fa-check-circle text-xl"></i>
+                        <span>تأكيد الطلب الآن (الدفع عند الاستلام)</span>
+                    </button>
+                    <p class="text-center text-xs text-gray-400">
+                        <i class="fa-solid fa-lock text-cyan-400 ml-1"></i> بياناتك محمية 100% وسيتم التواصل معك هاتفياً لتأكيد موعد التسليم.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر (تذييل الصفحة) -->
+    <footer class="bg-gray-950 border-t border-gray-900 py-8 px-4 text-center text-gray-500 text-xs sm:text-sm">
+        <div class="max-w-6xl mx-auto space-y-2">
+            <p class="font-bold text-gray-300">تيك زون مصر - جميع الحقوق محفوظة © 2026</p>
+            <p>خدمة العملاء والدعم الفني متاحة يومياً من 10 صباحاً حتى 10 مساءً</p>
+        </div>
+    </footer>
+
+    <!-- نافذة تأكيد الطلب (Modal) -->
+    <div id="success-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full rounded-3xl p-6 sm:p-8 text-center space-y-5 border border-emerald-500/40 shadow-2xl transform transition-all">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto animate-bounce">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-2xl font-black text-white">تم استلام طلبك بنجاح!</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+                شكراً لك يا <span id="modal-name" class="text-cyan-400 font-bold"></span>! تم تسجيل طلبك برقم <span id="modal-order-id" class="font-mono bg-gray-800 px-2 py-0.5 rounded text-white"></span> وسيتواصل معك فريقنا خلال ساعات لتأكيد الشحن.
+            </p>
+            <div class="bg-gray-900/90 rounded-2xl p-4 text-right text-xs space-y-2 border border-gray-800">
+                <div class="flex justify-between">
+                    <span class="text-gray-400">المنتج:</span>
+                    <span id="modal-product" class="text-white font-bold"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">الكمية:</span>
+                    <span id="modal-qty" class="text-white font-bold"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">الإجمالي شامل الشحن:</span>
+                    <span id="modal-total" class="text-cyan-400 font-black text-sm"></span>
+                </div>
+            </div>
+            <button onclick="closeModal()" class="w-full bg-gray-800 hover:bg-gray-700 text-white font-bold py-3.5 rounded-xl transition">
+                حسناً، العودة للصفحة
+            </button>
+        </div>
+    </div>
+
+    <!-- كود الجافاسكريبت لإدارة الحسابات والربط المجاني -->
+    <script>
+        // =========================================================================
+        // إعدادات الربط المجاني (Google Apps Script Webhook أو Telegram Bot)
+        // ضع رابط Google Apps Script هنا لاستقبال الطلبات في Google Sheets مجاناً
+        // =========================================================================
+        const GOOGLE_SHEET_WEBHOOK_URL = ""; 
+
+        // اختيار المنتج تلقائياً عند الضغط على زر "اطلب هذا المنتج" في الأعلى
+        function selectProduct(productName, price) {
+            const selectEl = document.getElementById('product-select');
+            for (let i = 0; i < selectEl.options.length; i++) {
+                if (selectEl.options[i].getAttribute('data-name') === productName) {
+                    selectEl.selectedIndex = i;
+                    break;
+                }
+            }
+            calculateTotal();
+            document.getElementById('order-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // تغيير الكمية (+ أو -)
+        function changeQty(delta) {
+            const qtyInput = document.getElementById('quantity');
+            let currentQty = parseInt(qtyInput.value);
+            let newQty = currentQty + delta;
+            if (newQty >= 1 && newQty <= 10) {
+                qtyInput.value = newQty;
+                calculateTotal();
+            }
+        }
+
+        // حساب السعر الإجمالي والشحن تلقائياً
+        function calculateTotal() {
+            const productPrice = parseFloat(document.getElementById('product-select').value);
+            const qty = parseInt(document.getElementById('quantity').value);
+            let shippingCost = parseFloat(document.getElementById('governorate').value);
+
+            const subtotal = productPrice * qty;
+            const freeShippingBadge = document.getElementById('free-shipping-badge');
+
+            // تفعيل الشحن المجاني عند طلب قطعتين أو أكثر
+            if (qty >= 2) {
+                shippingCost = 0;
+                freeShippingBadge.classList.remove('hidden');
+                document.getElementById('shipping-display').innerText = "مجاني (0 ج.م)";
+                document.getElementById('shipping-display').classList.add('text-emerald-400');
+            } else {
+                freeShippingBadge.classList.add('hidden');
+                document.getElementById('shipping-display').innerText = shippingCost + " ج.م";
+                document.getElementById('shipping-display').classList.remove('text-emerald-400');
+            }
+
+            const total = subtotal + shippingCost;
+            document.getElementById('subtotal-display').innerText = subtotal.toLocaleString() + " ج.م";
+            document.getElementById('total-display').innerText = total.toLocaleString() + " ج.م";
+
+            return { subtotal, shippingCost, total };
+        }
+
+        // التحقق من صحة رقم الهاتف المصري (يبدأ بـ 010 أو 011 أو 012 أو 015 ويتكون من 11 رقم)
+        function isValidEgyptianPhone(phone) {
+            const regex = /^01[0125][0-9]{8}$/;
+            return regex.test(phone.trim());
+        }
+
+        // معالجة إرسال النموذج
+        document.getElementById('order-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const errorBox = document.getElementById('error-box');
+            const errorText = document.getElementById('error-text');
+            errorBox.classList.add('hidden');
+
+            const name = document.getElementById('customer-name').value.trim();
+            const phone = document.getElementById('customer-phone').value.trim();
+            const govSelect = document.getElementById('governorate');
+            const governorate = govSelect.options[govSelect.selectedIndex].text.split(' (')[0];
+            const address = document.getElementById('customer-address').value.trim();
+            const prodSelect = document.getElementById('product-select');
+            const productName = prodSelect.options[prodSelect.selectedIndex].getAttribute('data-name');
+            const qty = parseInt(document.getElementById('quantity').value);
+            const { total } = calculateTotal();
+
+            // التحقق من صحة البيانات
+            if (name.length < 3) {
+                errorText.innerText = "يرجى إدخال الاسم بالكامل بشكل صحيح.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+            if (!isValidEgyptianPhone(phone)) {
+                errorText.innerText = "يرجى إدخال رقم موبايل مصري صحيح مكون من 11 رقماً (مثال: 010xxxxxxxx).";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+            if (address.length < 8) {
+                errorText.innerText = "يرجى كتابة العنوان بالتفصيل لتسهيل وصول المندوب إليك.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            // تجهيز بيانات الطلب لإرسالها
+            const orderId = "TZ-" + Math.floor(100000 + Math.random() * 900000);
+            const orderData = {
+                orderId: orderId,
+                date: new Date().toLocaleString('ar-EG'),
+                name: name,
+                phone: phone,
+                governorate: governorate,
+                address: address,
+                product: productName,
+                quantity: qty,
+                totalPrice: total + " ج.م"
+            };
+
+            const submitBtn = document.getElementById('submit-btn');
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري تسجيل طلبك...';
+
+            // إرسال البيانات إلى Google Sheets (إذا تم وضع الرابط)
+            if (GOOGLE_SHEET_WEBHOOK_URL !== "") {
+                try {
+                    await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(orderData)
+                    });
+                } catch (err) {
+                    console.error("Webhook Error:", err);
+                }
+            }
+
+            // عرض نافذة تأكيد الطلب للعميل
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+
+                document.getElementById('modal-name').innerText = name;
+                document.getElementById('modal-order-id').innerText = orderId;
+                document.getElementById('modal-product').innerText = productName;
+                document.getElementById('modal-qty').innerText = qty + " قطعة";
+                document.getElementById('modal-total').innerText = total.toLocaleString() + " ج.م";
+
+                document.getElementById('success-modal').classList.remove('hidden');
+                document.getElementById('order-form').reset();
+                calculateTotal();
+            }, 600);
+        });
+
+        function closeModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+
+        // تشغيل الحساب المبدئي عند تحميل الصفحة
+        window.onload = calculateTotal;
+    </script>
+</body>
+</html>
