@@ -468,7 +468,7 @@
     <!-- كود الجافاسكريبت المكتمل والجاهز للربط -->
     <script>
         // رابط جوجل شيت الخاص بك المضاف مسبقاً
-        const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyTBzR81zyPbb6b03uCVfHWNEZxrzrx_H44g4mNaScfdKVQC7OzDAZRmUTVbXj6dJcxAg/exec";
+        const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzdQBx1jK4VxYCfWm9MXixfqA_gJ_zgeHV0QI1ZRvB-GOwNOhNBnlv-nX9_CMvMpGkDtw/exec";
 
         function selectProduct(productName, price) {
             const select = document.getElementById('product-select');
@@ -564,15 +564,20 @@
                 total: totalText
             };
 
-            // إرسال البيانات إلى Google Sheets
+            // إرسال البيانات إلى Google Sheets بطريقة متوافقة تماماً مع المتصفح
+            const formData = new URLSearchParams();
+            formData.append('name', name);
+            formData.append('phone', phone);
+            formData.append('governorate', govText);
+            formData.append('address', address);
+            formData.append('product', productName);
+            formData.append('quantity', qty);
+            formData.append('total', totalText);
+
             fetch(GOOGLE_SHEET_WEBHOOK_URL, {
                 method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(orderData)
-            }).then(() => {
+                body: formData
+            }).then(response => response.text()).then(result => {
                 const orderId = 'TZ-' + Math.floor(100000 + Math.random() * 900000);
                 
                 document.getElementById('modal-name').innerText = name;
@@ -593,16 +598,3 @@
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fa-solid fa-check-circle text-xl"></i> <span>تأكيد الطلب الآن (الدفع عند الاستلام)</span>';
             });
-        });
-
-        function closeModal() {
-            document.getElementById('success-modal').classList.add('hidden');
-        }
-
-        // حساب الأسعار عند التحميل لأول مرة
-        window.onload = function() {
-            calculateTotal();
-        };
-    </script>
-</body>
-</html>
