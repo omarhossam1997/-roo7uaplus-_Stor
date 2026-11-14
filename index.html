@@ -291,15 +291,19 @@
                     <span id="error-text">يرجى التأكد من إدخال جميع البيانات بشكل صحيح.</span>
                 </div>
 
-                <!-- استخدام فورم HTML نظامي تماماً لكي تتعامل معه الإضافات كفورم حقيقي ولا تحظره -->
-                <form id="order-form" method="GET" action="https://script.google.com/macros/s/AKfycbwnlJQSxhVOsWcH2ch1buOgkbp2CqyeELkUZEAMCUHQ4ACLZzJIPkXHeema8ijBS4OHJA/exec" target="hidden-iframe" class="space-y-5">
+                <!-- استخدام FormSubmit لإرسال الطلبات للبريد فوراً من أي متصفح عادي -->
+                <form id="order-form" action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" class="space-y-5">
                     
-                    <input type="hidden" id="hidden-order-id" name="orderId">
+                    <!-- إعدادات FormSubmit -->
+                    <input type="hidden" name="_subject" value="🔔 طلب جديد وارد من متجر تيك زون!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" id="hidden-order-id" name="رقم_الطلب">
                     
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div class="sm:col-span-2">
                             <label class="block text-sm font-bold text-gray-300 mb-2">اختر المنتج المطلوب *</label>
-                            <select id="product-select" name="product" onchange="calculateTotal()" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white font-semibold outline-none transition">
+                            <select id="product-select" name="المنتج" onchange="calculateTotal()" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white font-semibold outline-none transition">
                                 <option value="سماعة بلوتوث Pro عازلة للضوضاء" data-price="450">سماعة بلوتوث Pro عازلة للضوضاء (450 ج.م)</option>
                                 <option value="ساعة ذكية Smart Watch Ultra" data-price="690">ساعة ذكية Smart Watch Ultra (690 ج.م)</option>
                                 <option value="مصباح RGB الذكي + شاحن لاسلكي" data-price="550">مصباح RGB الذكي + شاحن لاسلكي (550 ج.م)</option>
@@ -310,7 +314,7 @@
                             <label class="block text-sm font-bold text-gray-300 mb-2">الكمية *</label>
                             <div class="flex items-center bg-gray-900 border border-gray-700 rounded-xl overflow-hidden">
                                 <button type="button" onclick="changeQty(-1)" class="px-4 py-3.5 text-cyan-400 hover:bg-gray-800 font-black transition">-</button>
-                                <input type="number" id="quantity" name="quantity" value="1" min="1" max="10" readonly class="w-full bg-transparent text-center text-white font-bold outline-none">
+                                <input type="number" id="quantity" name="الكمية" value="1" min="1" max="10" readonly class="w-full bg-transparent text-center text-white font-bold outline-none">
                                 <button type="button" onclick="changeQty(1)" class="px-4 py-3.5 text-cyan-400 hover:bg-gray-800 font-black transition">+</button>
                             </div>
                         </div>
@@ -319,18 +323,18 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">الاسم بالكامل *</label>
-                            <input type="text" id="customer-name" name="name" required placeholder="مثال: أحمد محمود محمد" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition">
+                            <input type="text" id="customer-name" name="اسم_العميل" required placeholder="مثال: أحمد محمود محمد" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition">
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">رقم الموبايل (يفضل واتساب) *</label>
-                            <input type="tel" id="customer-phone" name="phone" required placeholder="01xxxxxxxxx" maxlength="11" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition text-left" dir="ltr">
+                            <input type="tel" id="customer-phone" name="رقم_الموبايل" required placeholder="01xxxxxxxxx" maxlength="11" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition text-left" dir="ltr">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">المحافظة *</label>
-                            <select id="governorate" name="governorate" onchange="calculateTotal()" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white font-semibold outline-none transition">
+                            <select id="governorate" name="المحافظة" onchange="calculateTotal()" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white font-semibold outline-none transition">
                                 <option value="القاهرة (شحن 50 ج.م)" data-shipping="50">القاهرة (شحن 50 ج.م)</option>
                                 <option value="الجيزة (شحن 50 ج.م)" data-shipping="50">الجيزة (شحن 50 ج.م)</option>
                                 <option value="الإسكندرية (شحن 60 ج.م)" data-shipping="60">الإسكندرية (شحن 60 ج.م)</option>
@@ -358,7 +362,7 @@
                         </div>
                         <div class="sm:col-span-2">
                             <label class="block text-sm font-bold text-gray-300 mb-2">العنوان بالتفصيل (المدينة / الشارع / علامة مميزة) *</label>
-                            <input type="text" id="customer-address" name="address" required placeholder="مثال: مدينة نصر، شارع عباس العقاد، عمارة 15..." class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition">
+                            <input type="text" id="customer-address" name="العنوان" required placeholder="مثال: مدينة نصر، شارع عباس العقاد، عمارة 15..." class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition">
                         </div>
                     </div>
 
@@ -376,8 +380,8 @@
                         </div>
                         <div class="border-t border-gray-800 pt-3 flex justify-between items-center">
                             <span class="text-base font-extrabold text-white">الإجمالي المطلوب عند الاستلام:</span>
-                            <span id="total-display" name="total" class="text-2xl font-black text-cyan-400">500 ج.م</span>
-                            <input type="hidden" id="hidden-total" name="total">
+                            <span id="total-display" class="text-2xl font-black text-cyan-400">500 ج.م</span>
+                            <input type="hidden" id="hidden-total" name="الاجمالي_الشامل">
                         </div>
                     </div>
 
@@ -389,9 +393,6 @@
                         <i class="fa-solid fa-lock text-cyan-400 ml-1"></i> بياناتك محمية 100% وسيتم حفظ الطلب في حسابك على الموقع فوراً.
                     </p>
                 </form>
-                
-                <!-- إطار مخفي لكي يتم إرسال بيانات الفورم إليه في الخلفية بدون مغادرة الصفحة -->
-                <iframe name="hidden-iframe" id="hidden-iframe" style="display:none;"></iframe>
             </div>
         </div>
     </section>
@@ -464,7 +465,7 @@
         </div>
     </div>
 
-    <!-- جافاسكريبت متوافق تماماً مع الفورم الطبيعي -->
+    <!-- جافاسكريبت إدارة المتجر وحساب العميل -->
     <script>
         function selectProduct(productName, price) {
             const select = document.getElementById('product-select');
@@ -529,7 +530,6 @@
             }
         }
 
-        // التعامل مع الإرسال الطبيعي للفورم دون إعاقة من الإضافات
         document.getElementById('order-form').addEventListener('submit', function(e) {
             const phone = document.getElementById('customer-phone').value.trim();
             const errorBox = document.getElementById('error-box');
@@ -555,38 +555,29 @@
             const totalText = document.getElementById('total-display').innerText;
             const orderDate = new Date().toLocaleString("ar-EG", { timeZone: "Africa/Cairo" });
 
-            const submitBtn = document.getElementById('submit-btn');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-2"></i> جاري تسجيل طلبك...';
+            // حفظ الطلب محلياً في حساب العميل لكي يراه في زر "حسابي وطلباتي"
+            localStorage.setItem('techzone_user_name', name);
+            let myOrders = JSON.parse(localStorage.getItem('techzone_orders') || '[]');
+            myOrders.unshift({
+                orderId: orderId,
+                product: productName,
+                quantity: qty,
+                total: totalText,
+                date: orderDate,
+                status: 'تم استقبال طلبك بنجاح وجاري التجهيز'
+            });
+            localStorage.setItem('techzone_orders', JSON.stringify(myOrders));
+            updateOrdersBadge();
 
-            // حفظ الطلب محلياً في حساب العميل وعرض رسالة النجاح بعد لحظات
+            // عرض نافذة النجاح للعميل بعد إرسال الفورم
             setTimeout(() => {
-                localStorage.setItem('techzone_user_name', name);
-                let myOrders = JSON.parse(localStorage.getItem('techzone_orders') || '[]');
-                myOrders.unshift({
-                    orderId: orderId,
-                    product: productName,
-                    quantity: qty,
-                    total: totalText,
-                    date: orderDate,
-                    status: 'تم استقبال طلبك بنجاح وجاري التجهيز'
-                });
-                localStorage.setItem('techzone_orders', JSON.stringify(myOrders));
-                updateOrdersBadge();
-
                 document.getElementById('modal-name').innerText = name;
                 document.getElementById('modal-order-id').innerText = orderId;
                 document.getElementById('modal-product').innerText = productName;
                 document.getElementById('modal-qty').innerText = qty;
                 document.getElementById('modal-total').innerText = totalText;
-
                 document.getElementById('success-modal').classList.remove('hidden');
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-check-circle text-xl"></i> <span>تأكيد الطلب الآن (الدفع عند الاستلام)</span>';
-                
-                document.getElementById('quantity').value = "1";
-                calculateTotal();
-            }, 700);
+            }, 500);
         });
 
         function closeModal() {
