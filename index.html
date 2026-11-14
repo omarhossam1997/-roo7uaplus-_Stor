@@ -435,7 +435,7 @@
     <!-- الفوتر -->
     <footer class="bg-gray-950 border-t border-gray-900 py-8 px-4 text-center text-gray-500 text-xs sm:text-sm">
         <div class="max-w-6xl mx-auto space-y-2">
-            <p class="font-bold text-gray-300"> roo7uaplusStor❤️❤️ - جميع الحقوق محفوظة © 2026</p>
+            <p class="font-bold text-gray-300">تيك زون مصر - جميع الحقوق محفوظة © 2026</p>
             <p>خدمة العملاء والدعم الفني متاحة يومياً من 10 صباحاً حتى 10 مساءً</p>
         </div>
     </footer>
@@ -500,9 +500,8 @@
         </div>
     </div>
 
-    <!-- كود الجافاسكريبت الآمن والمحدث -->
+    <!-- كود الجافاسكريبت المحدث لدعم الطلبات المتكررة -->
     <script>
-        // رابط الـ Webhook الخاص بجوجل شيت
         const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbx8pZzSzTNv-QE5j0YcPer3KUYnOliKNZ37k-5OFfHFBl_hfVNxVkmOqauWAmnggXIBYg/exec";
 
         function selectProduct(productName, price) {
@@ -564,7 +563,7 @@
             }
         }
 
-        // إرسال البيانات بطريقة آمنة تماماً تتخطى قيود الاتصال
+        // إرسال البيانات ودعم الطلبات المتكررة بسلاسة
         document.getElementById('order-form').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -609,18 +608,17 @@
                 total: totalText
             });
 
-            // إرسال البيانات لخلفية جوجل شيت عبر GET لتجنب أخطاء الاتصال نهائياً
             fetch(GOOGLE_SHEET_WEBHOOK_URL + '?' + params.toString(), {
                 method: 'GET',
                 mode: 'no-cors'
             }).then(() => {
-                finishOrder(orderId, name, productName, qty, totalText, orderDate, submitBtn);
+                finishNewOrder(orderId, name, productName, qty, totalText, orderDate, submitBtn);
             }).catch(() => {
-                finishOrder(orderId, name, productName, qty, totalText, orderDate, submitBtn);
+                finishNewOrder(orderId, name, productName, qty, totalText, orderDate, submitBtn);
             });
         });
 
-        function finishOrder(orderId, name, productName, qty, totalText, orderDate, submitBtn) {
+        function finishNewOrder(orderId, name, productName, qty, totalText, orderDate, submitBtn) {
             localStorage.setItem('techzone_user_name', name);
             let myOrders = JSON.parse(localStorage.getItem('techzone_orders') || '[]');
             myOrders.unshift({
@@ -629,7 +627,7 @@
                 quantity: qty,
                 total: totalText,
                 date: orderDate,
-                status: 'تم استقبال الطلب بنجاح في حسابك وجاري التجهيز'
+                status: 'تم استقبال طلبك بنجاح وجاري التجهيز'
             });
             localStorage.setItem('techzone_orders', JSON.stringify(myOrders));
             updateOrdersBadge();
@@ -643,7 +641,8 @@
             document.getElementById('success-modal').classList.remove('hidden');
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fa-solid fa-check-circle text-xl"></i> <span>تأكيد الطلب الآن (الدفع عند الاستلام)</span>';
-            document.getElementById('order-form').reset();
+            
+            document.getElementById('quantity').value = "1";
             calculateTotal();
         }
 
