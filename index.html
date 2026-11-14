@@ -291,22 +291,26 @@
                     <span id="error-text">يرجى التأكد من إدخال جميع البيانات بشكل صحيح.</span>
                 </div>
 
-                <form id="order-form" class="space-y-5">
+                <!-- استخدام فورم HTML نظامي تماماً لكي تتعامل معه الإضافات كفورم حقيقي ولا تحظره -->
+                <form id="order-form" method="GET" action="https://script.google.com/macros/s/AKfycbwnlJQSxhVOsWcH2ch1buOgkbp2CqyeELkUZEAMCUHQ4ACLZzJIPkXHeema8ijBS4OHJA/exec" target="hidden-iframe" class="space-y-5">
+                    
+                    <input type="hidden" id="hidden-order-id" name="orderId">
+                    
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div class="sm:col-span-2">
                             <label class="block text-sm font-bold text-gray-300 mb-2">اختر المنتج المطلوب *</label>
-                            <select id="product-select" onchange="calculateTotal()" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white font-semibold outline-none transition">
-                                <option value="450" data-name="سماعة بلوتوث Pro عازلة للضوضاء">سماعة بلوتوث Pro عازلة للضوضاء (450 ج.م)</option>
-                                <option value="690" data-name="ساعة ذكية Smart Watch Ultra">ساعة ذكية Smart Watch Ultra (690 ج.م)</option>
-                                <option value="550" data-name="مصباح RGB الذكي + شاحن لاسلكي">مصباح RGB الذكي + شاحن لاسلكي (550 ج.م)</option>
-                                <option value="620" data-name="باور بانك مغناطيسي 10000mAh">باور بانك مغناطيسي 10000mAh (620 ج.م)</option>
+                            <select id="product-select" name="product" onchange="calculateTotal()" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white font-semibold outline-none transition">
+                                <option value="سماعة بلوتوث Pro عازلة للضوضاء" data-price="450">سماعة بلوتوث Pro عازلة للضوضاء (450 ج.م)</option>
+                                <option value="ساعة ذكية Smart Watch Ultra" data-price="690">ساعة ذكية Smart Watch Ultra (690 ج.م)</option>
+                                <option value="مصباح RGB الذكي + شاحن لاسلكي" data-price="550">مصباح RGB الذكي + شاحن لاسلكي (550 ج.م)</option>
+                                <option value="باور بانك مغناطيسي 10000mAh" data-price="620">باور بانك مغناطيسي 10000mAh (620 ج.م)</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">الكمية *</label>
                             <div class="flex items-center bg-gray-900 border border-gray-700 rounded-xl overflow-hidden">
                                 <button type="button" onclick="changeQty(-1)" class="px-4 py-3.5 text-cyan-400 hover:bg-gray-800 font-black transition">-</button>
-                                <input type="number" id="quantity" value="1" min="1" max="10" readonly class="w-full bg-transparent text-center text-white font-bold outline-none">
+                                <input type="number" id="quantity" name="quantity" value="1" min="1" max="10" readonly class="w-full bg-transparent text-center text-white font-bold outline-none">
                                 <button type="button" onclick="changeQty(1)" class="px-4 py-3.5 text-cyan-400 hover:bg-gray-800 font-black transition">+</button>
                             </div>
                         </div>
@@ -315,46 +319,46 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">الاسم بالكامل *</label>
-                            <input type="text" id="customer-name" required placeholder="مثال: أحمد محمود محمد" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition">
+                            <input type="text" id="customer-name" name="name" required placeholder="مثال: أحمد محمود محمد" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition">
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">رقم الموبايل (يفضل واتساب) *</label>
-                            <input type="tel" id="customer-phone" required placeholder="01xxxxxxxxx" maxlength="11" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition text-left" dir="ltr">
+                            <input type="tel" id="customer-phone" name="phone" required placeholder="01xxxxxxxxx" maxlength="11" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition text-left" dir="ltr">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">المحافظة *</label>
-                            <select id="governorate" onchange="calculateTotal()" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white font-semibold outline-none transition">
-                                <option value="50">القاهرة (شحن 50 ج.م)</option>
-                                <option value="50">الجيزة (شحن 50 ج.م)</option>
-                                <option value="60">الإسكندرية (شحن 60 ج.م)</option>
-                                <option value="65">الدقهلية (شحن 65 ج.م)</option>
-                                <option value="65">الشرقية (شحن 65 ج.م)</option>
-                                <option value="65">الغربية (شحن 65 ج.م)</option>
-                                <option value="65">المنوفية (شحن 65 ج.م)</option>
-                                <option value="65">القليوبية (شحن 65 ج.م)</option>
-                                <option value="65">البحيرة (شحن 65 ج.م)</option>
-                                <option value="65">كفر الشيخ (شحن 65 ج.م)</option>
-                                <option value="65">دمياط (شحن 65 ج.م)</option>
-                                <option value="70">بورسعيد (شحن 70 ج.م)</option>
-                                <option value="70">الإسماعيلية (شحن 70 ج.م)</option>
-                                <option value="70">السويس (شحن 70 ج.م)</option>
-                                <option value="75">الفيوم (شحن 75 ج.م)</option>
-                                <option value="75">بني سويف (شحن 75 ج.م)</option>
-                                <option value="75">المنيا (شحن 75 ج.م)</option>
-                                <option value="80">أسيوط (شحن 80 ج.م)</option>
-                                <option value="80">سوهاج (شحن 80 ج.م)</option>
-                                <option value="85">قنا (شحن 85 ج.م)</option>
-                                <option value="85">الأقصر (شحن 85 ج.م)</option>
-                                <option value="85">أسوان (شحن 85 ج.م)</option>
-                                <option value="90">البحر الأحمر / مطروح (شحن 90 ج.م)</option>
+                            <select id="governorate" name="governorate" onchange="calculateTotal()" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white font-semibold outline-none transition">
+                                <option value="القاهرة (شحن 50 ج.م)" data-shipping="50">القاهرة (شحن 50 ج.م)</option>
+                                <option value="الجيزة (شحن 50 ج.م)" data-shipping="50">الجيزة (شحن 50 ج.م)</option>
+                                <option value="الإسكندرية (شحن 60 ج.م)" data-shipping="60">الإسكندرية (شحن 60 ج.م)</option>
+                                <option value="الدقهلية (شحن 65 ج.م)" data-shipping="65">الدقهلية (شحن 65 ج.م)</option>
+                                <option value="الشرقية (شحن 65 ج.م)" data-shipping="65">الشرقية (شحن 65 ج.م)</option>
+                                <option value="الغربية (شحن 65 ج.م)" data-shipping="65">الغربية (شحن 65 ج.م)</option>
+                                <option value="المنوفية (شحن 65 ج.م)" data-shipping="65">المنوفية (شحن 65 ج.م)</option>
+                                <option value="القليوبية (شحن 65 ج.م)" data-shipping="65">القليوبية (شحن 65 ج.م)</option>
+                                <option value="البحيرة (شحن 65 ج.م)" data-shipping="65">البحيرة (شحن 65 ج.م)</option>
+                                <option value="كفر الشيخ (شحن 65 ج.م)" data-shipping="65">كفر الشيخ (شحن 65 ج.م)</option>
+                                <option value="دمياط (شحن 65 ج.م)" data-shipping="65">دمياط (شحن 65 ج.م)</option>
+                                <option value="بورسعيد (شحن 70 ج.م)" data-shipping="70">بورسعيد (شحن 70 ج.م)</option>
+                                <option value="الإسماعيلية (شحن 70 ج.م)" data-shipping="70">الإسماعيلية (شحن 70 ج.م)</option>
+                                <option value="السويس (شحن 70 ج.م)" data-shipping="70">السويس (شحن 70 ج.م)</option>
+                                <option value="الفيوم (شحن 75 ج.م)" data-shipping="75">الفيوم (شحن 75 ج.م)</option>
+                                <option value="بني سويف (شحن 75 ج.م)" data-shipping="75">بني سويف (شحن 75 ج.م)</option>
+                                <option value="المنيا (شحن 75 ج.م)" data-shipping="75">المنيا (شحن 75 ج.م)</option>
+                                <option value="أسيوط (شحن 80 ج.م)" data-shipping="80">أسيوط (شحن 80 ج.م)</option>
+                                <option value="سوهاج (شحن 80 ج.م)" data-shipping="80">سوهاج (شحن 80 ج.م)</option>
+                                <option value="قنا (شحن 85 ج.م)" data-shipping="85">قنا (شحن 85 ج.م)</option>
+                                <option value="الأقصر (شحن 85 ج.م)" data-shipping="85">الأقصر (شحن 85 ج.م)</option>
+                                <option value="أسوان (شحن 85 ج.م)" data-shipping="85">أسوان (شحن 85 ج.م)</option>
+                                <option value="البحر الأحمر / مطروح (شحن 90 ج.م)" data-shipping="90">البحر الأحمر / مطروح (شحن 90 ج.م)</option>
                             </select>
                         </div>
                         <div class="sm:col-span-2">
                             <label class="block text-sm font-bold text-gray-300 mb-2">العنوان بالتفصيل (المدينة / الشارع / علامة مميزة) *</label>
-                            <input type="text" id="customer-address" required placeholder="مثال: مدينة نصر، شارع عباس العقاد، عمارة 15..." class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition">
+                            <input type="text" id="customer-address" name="address" required placeholder="مثال: مدينة نصر، شارع عباس العقاد، عمارة 15..." class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 outline-none transition">
                         </div>
                     </div>
 
@@ -372,7 +376,8 @@
                         </div>
                         <div class="border-t border-gray-800 pt-3 flex justify-between items-center">
                             <span class="text-base font-extrabold text-white">الإجمالي المطلوب عند الاستلام:</span>
-                            <span id="total-display" class="text-2xl font-black text-cyan-400">500 ج.م</span>
+                            <span id="total-display" name="total" class="text-2xl font-black text-cyan-400">500 ج.م</span>
+                            <input type="hidden" id="hidden-total" name="total">
                         </div>
                     </div>
 
@@ -384,6 +389,9 @@
                         <i class="fa-solid fa-lock text-cyan-400 ml-1"></i> بياناتك محمية 100% وسيتم حفظ الطلب في حسابك على الموقع فوراً.
                     </p>
                 </form>
+                
+                <!-- إطار مخفي لكي يتم إرسال بيانات الفورم إليه في الخلفية بدون مغادرة الصفحة -->
+                <iframe name="hidden-iframe" id="hidden-iframe" style="display:none;"></iframe>
             </div>
         </div>
     </section>
@@ -456,14 +464,12 @@
         </div>
     </div>
 
-    <!-- كود الجافاسكريبت النهائي بطريقة الـ Iframe المضمونة 100% -->
+    <!-- جافاسكريبت متوافق تماماً مع الفورم الطبيعي -->
     <script>
-        const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbx8pZzSzTNv-QE5j0YcPer3KUYnOliKNZ37k-5OFfHFBl_hfVNxVkmOqauWAmnggXIBYg/exec";
-
         function selectProduct(productName, price) {
             const select = document.getElementById('product-select');
             for (let i = 0; i < select.options.length; i++) {
-                if (select.options[i].getAttribute('data-name') === productName) {
+                if (select.options[i].value === productName) {
                     select.selectedIndex = i;
                     break;
                 }
@@ -483,10 +489,13 @@
 
         function calculateTotal() {
             const productSelect = document.getElementById('product-select');
-            const price = parseFloat(productSelect.value);
+            const selectedOption = productSelect.options[productSelect.selectedIndex];
+            const price = parseFloat(selectedOption.getAttribute('data-price'));
             const qty = parseInt(document.getElementById('quantity').value);
+            
             const govSelect = document.getElementById('governorate');
-            let shipping = parseFloat(govSelect.value);
+            const govOption = govSelect.options[govSelect.selectedIndex];
+            let shipping = parseFloat(govOption.getAttribute('data-shipping'));
 
             const subtotal = price * qty;
             let freeShipping = false;
@@ -508,6 +517,7 @@
             }
 
             document.getElementById('total-display').innerText = total + ' ج.م';
+            document.getElementById('hidden-total').value = total + ' ج.م';
         }
 
         function updateOrdersBadge() {
@@ -519,25 +529,15 @@
             }
         }
 
-        // إرسال البيانات عبر عنصر iframe مخفي لتجاوز مانعات الإعلانات في المتصفحات العادية
+        // التعامل مع الإرسال الطبيعي للفورم دون إعاقة من الإضافات
         document.getElementById('order-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('customer-name').value.trim();
             const phone = document.getElementById('customer-phone').value.trim();
-            const address = document.getElementById('customer-address').value.trim();
-            const productSelect = document.getElementById('product-select');
-            const productName = productSelect.options[productSelect.selectedIndex].getAttribute('data-name');
-            const qty = document.getElementById('quantity').value;
-            const govSelect = document.getElementById('governorate');
-            const govText = govSelect.options[govSelect.selectedIndex].text;
-            const totalText = document.getElementById('total-display').innerText;
-
             const errorBox = document.getElementById('error-box');
             const errorText = document.getElementById('error-text');
 
             const phoneRegex = /^01[0125][0-9]{8}$/;
             if (!phoneRegex.test(phone)) {
+                e.preventDefault();
                 errorText.innerText = 'يرجى إدخال رقم موبايل مصري صحيح مكون من 11 رقماً (مثال: 01012345678)';
                 errorBox.classList.remove('hidden');
                 document.getElementById('customer-phone').focus();
@@ -546,53 +546,20 @@
 
             errorBox.classList.add('hidden');
 
+            const orderId = 'TZ-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('hidden-order-id').value = orderId;
+            
+            const name = document.getElementById('customer-name').value.trim();
+            const productName = document.getElementById('product-select').value;
+            const qty = document.getElementById('quantity').value;
+            const totalText = document.getElementById('total-display').innerText;
+            const orderDate = new Date().toLocaleString("ar-EG", { timeZone: "Africa/Cairo" });
+
             const submitBtn = document.getElementById('submit-btn');
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-2"></i> جاري تسجيل طلبك...';
 
-            const orderId = 'TZ-' + Math.floor(100000 + Math.random() * 900000);
-            const orderDate = new Date().toLocaleString("ar-EG", { timeZone: "Africa/Cairo" });
-
-            // إنشاء iframe مخفي لضمان إرسال الطلب دون أن تحظره إضافات المتصفح
-            let iframe = document.getElementById('hidden-iframe');
-            if (!iframe) {
-                iframe = document.createElement('iframe');
-                iframe.name = 'hidden-iframe';
-                iframe.id = 'hidden-iframe';
-                iframe.style.display = 'none';
-                document.body.appendChild(iframe);
-            }
-
-            // إنشاء فورم مؤقت وإرساله داخل الـ iframe
-            const tempForm = document.createElement('form');
-            tempForm.action = GOOGLE_SHEET_WEBHOOK_URL;
-            tempForm.method = 'GET';
-            tempForm.target = 'hidden-iframe';
-
-            const formData = {
-                orderId: orderId,
-                name: name,
-                phone: phone,
-                governorate: govText,
-                address: address,
-                product: productName,
-                quantity: qty,
-                total: totalText
-            };
-
-            for (const key in formData) {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = key;
-                input.value = formData[key];
-                tempForm.appendChild(input);
-            }
-
-            document.body.appendChild(tempForm);
-            tempForm.submit();
-            document.body.removeChild(tempForm);
-
-            // حفظ الطلب محلياً في حساب العميل وعرض نافذة النجاح
+            // حفظ الطلب محلياً في حساب العميل وعرض رسالة النجاح بعد لحظات
             setTimeout(() => {
                 localStorage.setItem('techzone_user_name', name);
                 let myOrders = JSON.parse(localStorage.getItem('techzone_orders') || '[]');
@@ -619,7 +586,7 @@
                 
                 document.getElementById('quantity').value = "1";
                 calculateTotal();
-            }, 800);
+            }, 700);
         });
 
         function closeModal() {
