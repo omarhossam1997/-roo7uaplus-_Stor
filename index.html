@@ -52,7 +52,7 @@
         <i class="fa-solid fa-bolt ml-1"></i> <span data-translate="banner_text">عروض الجمعة الصفراء: شحن مجاني عند طلب قطعتين أو أكثر + الدفع عند الاستلام!</span>
     </div>
 
-    <!-- الهيدر الرئيسي المطابق لـ نون وزيادة -->
+    <!-- الهيدر الرئيسي -->
     <header class="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-xs">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
             
@@ -64,13 +64,13 @@
                 <span>تيك<span class="text-blue-600">زون</span></span>
             </a>
 
-            <!-- شريط البحث السريع في المنتصف -->
+            <!-- شريط البحث السريع -->
             <div class="hidden md:flex flex-1 max-w-xl relative">
                 <input type="text" id="search-input" oninput="filterProducts(this.value)" placeholder="ما الذي تبحث عنه؟ (أحدث الأجهزة، الهواتف، الساعات...)" class="w-full bg-gray-100 border border-gray-200 focus:border-blue-500 rounded-2xl px-4 py-2.5 text-xs text-gray-900 outline-none pr-10">
                 <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3.5 text-gray-400"></i>
             </div>
 
-            <!-- أزرار الإجراءات والحساب -->
+            <!-- أزرار الإجراءات -->
             <div class="flex items-center gap-2 sm:gap-3">
                 
                 <!-- عربة التسوق -->
@@ -94,7 +94,7 @@
                     <span id="orders-badge" class="hidden bg-emerald-600 text-white text-[11px] font-black px-1.5 py-0.5 rounded-full shadow">0</span>
                 </button>
 
-                <!-- تبديل اللغة (عربي / إنجليزي) -->
+                <!-- تبديل اللغة -->
                 <button onclick="toggleLanguage()" class="bg-gray-900 text-yellow-300 text-xs sm:text-sm font-bold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md">
                     <i class="fa-solid fa-globe"></i>
                     <span id="lang-btn-text">English</span>
@@ -115,7 +115,7 @@
         </div>
     </nav>
 
-    <!-- البانر الرئيسي الترويجي -->
+    <!-- البانر الرئيسي -->
     <section class="max-w-7xl mx-auto px-4 py-6">
         <div class="noon-yellow-bg bg-[#feee00] rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md relative overflow-hidden">
             <div class="space-y-3 z-10 text-center md:text-right">
@@ -135,15 +135,14 @@
     <section id="products-grid" class="max-w-7xl mx-auto px-4 py-8">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl sm:text-2xl font-black text-gray-900" data-translate="grid_title">المنتجات الأكثر مبيعاً (إكسبرس)</h2>
-            <span class="text-xs text-gray-500 font-bold" id="products-count">تحديث مباشر</span>
         </div>
 
         <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- المنتجات تتعبى تلقائيا بالـ JS -->
+            <!-- المنتجات تتعبى تلقائيا -->
         </div>
     </section>
 
-    <!-- نافذة عربة التسوق المطابقة لـ نون -->
+    <!-- نافذة عربة التسوق -->
     <div id="cart-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4">
         <div class="bg-gray-50 max-w-5xl w-full rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[92vh]">
             <div class="bg-white px-6 py-4 border-b border-gray-200 flex justify-between items-center">
@@ -208,7 +207,7 @@
         </div>
     </div>
 
-    <!-- نافذة الطلبيات (مع إمكانية المسح أو الإزالة من القائمة) -->
+    <!-- نافذة الطلبيات -->
     <div id="orders-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
         <div class="bg-white max-w-lg w-full rounded-3xl p-6 space-y-4 shadow-2xl">
             <div class="flex justify-between items-center border-b border-gray-100 pb-3">
@@ -229,9 +228,8 @@
         <span id="toast-msg">تم بنجاح!</span>
     </div>
 
-    <!-- الجافاسكريبت والمنطق البرمجي -->
     <script>
-        const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyVRRiIrVuKCs4SA1IzC_z7soQHl0g4a6DVVlMfRTpdgPFLhzOxZrT2gcSnO0WIiEDZHw/exec";
+        const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxRPrkOS-J3b1xo5bnkWz_TSf3_rvCdhCyCYuOxNjEKpgm5-cScAfMc-A4acyW8goY_cQ/exec";
 
         let products = [
             { id: 'p1', name: 'لوحة مفاتيح بلوتوث فائقة النحافة، محمولة وقابلة لإعادة الشحن', price: 299, oldPrice: 450, model: 'K350 - Black', img: 'https://placehold.co/300x300/f3f4f6/111827?text=Keyboard' },
@@ -522,7 +520,6 @@
             `).join('');
         }
 
-        // مسح الطلب من قائمة الطلبيات بحيث يختفي فوراً
         function removeOrder(orderId) {
             activeOrders = activeOrders.filter(o => o.orderId !== orderId);
             document.getElementById('orders-badge').innerText = activeOrders.length;
@@ -546,7 +543,7 @@
             }
 
             const orderId = 'TZ-' + Math.floor(100000 + Math.random() * 900000);
-            const summary = cart.map(i => `${i.name} (x${i.qty})`).join(', ');
+            const summary = cart.map(i => `${i.name} (x${i.qty})`).join(' + ');
             const total = document.getElementById('summary-total').innerText;
             const status = currentLang === 'ar' ? '✅ طلب مؤكد - جاري التجهيز' : '✅ Confirmed - Processing';
 
