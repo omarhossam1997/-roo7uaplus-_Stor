@@ -529,48 +529,59 @@
         }
 
         function confirmOrder() {
-            if (cart.length === 0) {
-                showToast(currentLang === 'ar' ? 'عربة التسوق فارغة!' : 'Cart is empty!');
-                return;
-            }
-            const name = document.getElementById('cust-name').value.trim();
-            const phone = document.getElementById('cust-phone').value.trim();
-            const address = document.getElementById('cust-address').value.trim();
+    if (cart.length === 0) {
+        showToast(currentLang === 'ar' ? 'عربة التسوق فارغة!' : 'Cart is empty!');
+        return;
+    }
+    const name = document.getElementById('cust-name').value.trim();
+    const phone = document.getElementById('cust-phone').value.trim();
+    const address = document.getElementById('cust-address').value.trim();
 
-            if (!name || !phone || !address) {
-                alert(currentLang === 'ar' ? 'يرجى إكمال بيانات الشحن (الاسم، الموبايل، العنوان)' : 'Please fill in shipping details');
-                return;
-            }
+    if (!name || !phone || !address) {
+        alert(currentLang === 'ar' ? 'يرجى إكمال بيانات الشحن (الاسم، الموبايل، العنوان)' : 'Please fill in shipping details');
+        return;
+    }
 
-            const orderId = 'TZ-' + Math.floor(100000 + Math.random() * 900000);
-            const summary = cart.map(i => `${i.name} (x${i.qty})`).join(' + ');
-            const total = document.getElementById('summary-total').innerText;
-            const status = currentLang === 'ar' ? '✅ طلب مؤكد - جاري التجهيز' : '✅ Confirmed - Processing';
+    const orderId = 'TZ-' + Math.floor(100000 + Math.random() * 900000);
+    const totalAmount = document.getElementById('summary-total').innerText;
+    
+    let productsArray = [];
+    let summaryText = "";
 
-            activeOrders.unshift({ orderId, summary, total, status });
-            const badge = document.getElementById('orders-badge');
-            badge.innerText = activeOrders.length;
-            badge.classList.remove('hidden');
+    cart.forEach((item, index) => {
+        const itemText = `${item.name} (${item.model}) - الكمية: ${item.qty}`;
+        productsArray.push(itemText);
+        if(index === 0) summaryText = itemText;
+        else summaryText += " + " + itemText;
+    });
 
-            // إرسال البيانات لجوجل شيت تلقائياً
-            const params = new URLSearchParams({
-                action: 'create',
-                orderId: orderId,
-                name: name,
-                phone: phone,
-                address: address,
-                product: summary,
-                total: total
-            });
-            const img = new Image();
-            img.src = GOOGLE_SHEET_WEBHOOK_URL + '?' + params.toString();
+    // إرسال البيانات بالشكل الجديد لجوجل شيت
+    const params = new URLSearchParams({
+        action: 'create',
+        orderId: orderId,
+        name: name,
+        phone: phone,
+        address: address,
+        products: productsArray.join("||"), // إرسال المنتجات مفصولة لتظهر تحت بعضها
+        total: totalAmount
+    });
 
-            cart = [];
-            updateBadges();
-            closeCartModal();
-            showToast(currentLang === 'ar' ? 'تم تأكيد طلبك بنجاح!' : 'Order confirmed successfully!');
-            openOrdersModal();
-        }
+    const img = new Image();
+    img.src = GOOGLE_SHEET_WEBHOOK_URL + '?' + params.toString();
+
+    const status = currentLang === 'ar' ? '✅ طلب مؤكد - جاري التجهيز' : '✅ Confirmed - Processing';
+    activeOrders.unshift({ orderId, summary: summaryText, total: totalAmount, status });
+    
+    const badge = document.getElementById('orders-badge');
+    badge.innerText = activeOrders.length;
+    badge.classList.remove('hidden');
+
+    cart = [];
+    updateBadges();
+    closeCartModal();
+    showToast(currentLang === 'ar' ? 'تم تأكيد طلبك بنجاح!' : 'Order confirmed successfully!');
+    openOrdersModal();
+}
 
         function openCartModal() { renderCartModal(); document.getElementById('cart-modal').classList.remove('hidden'); }
         function closeCartModal() { document.getElementById('cart-modal').classList.add('hidden'); }
