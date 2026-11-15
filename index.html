@@ -555,19 +555,21 @@
         else summaryText += " + " + itemText;
     });
 
-    // إرسال البيانات بالشكل الجديد لجوجل شيت
     const params = new URLSearchParams({
         action: 'create',
         orderId: orderId,
         name: name,
         phone: phone,
         address: address,
-        products: productsArray.join("||"), // إرسال المنتجات مفصولة لتظهر تحت بعضها
+        products: productsArray.join("||"),
         total: totalAmount
     });
 
-    const img = new Image();
-    img.src = GOOGLE_SHEET_WEBHOOK_URL + '?' + params.toString();
+    // إرسال البيانات عبر fetch للتأكد من وصولها للشيت
+    fetch(GOOGLE_SHEET_WEBHOOK_URL + '?' + params.toString(), {
+        method: 'GET',
+        mode: 'no-cors'
+    }).catch(err => console.log('Sheet error:', err));
 
     const status = currentLang === 'ar' ? '✅ طلب مؤكد - جاري التجهيز' : '✅ Confirmed - Processing';
     activeOrders.unshift({ orderId, summary: summaryText, total: totalAmount, status });
@@ -582,7 +584,6 @@
     showToast(currentLang === 'ar' ? 'تم تأكيد طلبك بنجاح!' : 'Order confirmed successfully!');
     openOrdersModal();
 }
-
         function openCartModal() { renderCartModal(); document.getElementById('cart-modal').classList.remove('hidden'); }
         function closeCartModal() { document.getElementById('cart-modal').classList.add('hidden'); }
         function openWishlistModal() { renderWishlistModal(); document.getElementById('wishlist-modal').classList.remove('hidden'); }
