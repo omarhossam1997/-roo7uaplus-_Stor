@@ -171,7 +171,7 @@
                             <span data-translate="shipping">رسوم الشحن</span>
                             <span id="summary-shipping" class="font-bold text-gray-900">30.00 ج.م</span>
                         </div>
-                        <div id="free-shipping-notice" class="hidden text-[11px] text-emerald-600 font-bold bg-emerald-50 p-2 rounded-xl text-center">
+                        <div id="free-shipping-notice" class="hidden text-[11px] text-emerald-600 font-bold bg-emerald-50 p-2 rounded-xl text-center" data-translate="free_ship_notice">
                             🎉 مبروك! حصلت على شحن مجاني لوجود قطعتين أو أكثر في سلتك!
                         </div>
                         <div class="border-t border-gray-100 pt-3 flex justify-between items-center">
@@ -182,9 +182,9 @@
 
                     <div class="bg-white p-5 rounded-2xl border border-gray-200 space-y-3 shadow-xs">
                         <h4 class="text-xs font-black text-gray-800 uppercase" data-translate="shipping_details">بيانات الشحن والاستلام</h4>
-                        <input type="text" id="cust-name" placeholder="الاسم بالكامل" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs text-gray-900 outline-none focus:border-blue-500">
-                        <input type="tel" id="cust-phone" placeholder="رقم الموبايل (واتساب) 01xxxxxxxx" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs text-gray-900 outline-none focus:border-blue-500 text-left" dir="ltr">
-                        <input type="text" id="cust-address" placeholder="العنوان بالتفصيل (المدينة، الشارع، رقم العمارة)" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs text-gray-900 outline-none focus:border-blue-500">
+                        <input type="text" id="cust-name" data-translate-placeholder="name_placeholder" placeholder="الاسم بالكامل" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs text-gray-900 outline-none focus:border-blue-500">
+                        <input type="tel" id="cust-phone" data-translate-placeholder="phone_placeholder" placeholder="رقم الموبايل (واتساب) 01xxxxxxxx" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs text-gray-900 outline-none focus:border-blue-500 text-left" dir="ltr">
+                        <input type="text" id="cust-address" data-translate-placeholder="address_placeholder" placeholder="العنوان بالتفصيل (المدينة، الشارع، رقم العمارة)" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs text-gray-900 outline-none focus:border-blue-500">
                         
                         <button onclick="confirmOrder()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-3.5 rounded-xl transition text-sm shadow-lg shadow-blue-500/20" data-translate="confirm_checkout_btn">
                             تأكيد الطلب الآن (الدفع عند الاستلام)
@@ -231,11 +231,32 @@
     <script>
         const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxUe-N0OQeklU6Agnv5mdmQnPLSQA8bR4tdvQ1dRUPLMI5aa-tx0pHlvsQm6ujgxv_cfw/exec";
 
+        // المنتجات مع دعم اللغتين (عربي / إنجليزي)
         let products = [
-            { id: 'p1', name: 'لوحة مفاتيح بلوتوث فائقة النحافة، محمولة وقابلة لإعادة الشحن', price: 299, oldPrice: 450, model: 'K350 - Black', img: 'https://placehold.co/300x300/f3f4f6/111827?text=Keyboard' },
-            { id: 'p2', name: 'ساعة ذكية الترا بشاشة AMOLED ومكالمات بلوتوث', price: 650, oldPrice: 1200, model: 'Ultra-8', img: 'https://placehold.co/300x300/f3f4f6/111827?text=Smart+Watch' },
-            { id: 'p3', name: 'مصباح إضاءة RGB الذكي مع شاحن لاسلكي وسماعة بلوتوث', price: 550, oldPrice: 900, model: 'RGB-Lamp', img: 'https://placehold.co/300x300/f3f4f6/111827?text=RGB+Lamp' },
-            { id: 'p4', name: 'باور بانك مغناطيسي سريع 10000mAh بخاصية MagSafe', price: 620, oldPrice: 950, model: 'Mag-10K', img: 'https://placehold.co/300x300/f3f4f6/111827?text=PowerBank' }
+            { 
+                id: 'p1', 
+                name: { ar: 'لوحة مفاتيح بلوتوث فائقة النحافة، محمولة وقابلة لإعادة الشحن', en: 'Ultra-Slim Portable Rechargeable Bluetooth Keyboard' }, 
+                price: 299, oldPrice: 450, model: 'K350 - Black', 
+                img: 'https://placehold.co/300x300/f3f4f6/111827?text=Keyboard' 
+            },
+            { 
+                id: 'p2', 
+                name: { ar: 'ساعة ذكية الترا بشاشة AMOLED ومكالمات بلوتوث', en: 'Ultra Smart Watch with AMOLED Display & Bluetooth Calls' }, 
+                price: 650, oldPrice: 1200, model: 'Ultra-8', 
+                img: 'https://placehold.co/300x300/f3f4f6/111827?text=Smart+Watch' 
+            },
+            { 
+                id: 'p3', 
+                name: { ar: 'مصباح إضاءة RGB الذكي مع شاحن لاسلكي وسماعة بلوتوث', en: 'Smart RGB Lamp with Wireless Charger & Bluetooth Speaker' }, 
+                price: 550, oldPrice: 900, model: 'RGB-Lamp', 
+                img: 'https://placehold.co/300x300/f3f4f6/111827?text=RGB+Lamp' 
+            },
+            { 
+                id: 'p4', 
+                name: { ar: 'باور بانك مغناطيسي سريع 10000mAh بخاصية MagSafe', en: 'Magnetic Fast Power Bank 10000mAh with MagSafe' }, 
+                price: 620, oldPrice: 950, model: 'Mag-10K', 
+                img: 'https://placehold.co/300x300/f3f4f6/111827?text=PowerBank' 
+            }
         ];
 
         let cart = [];
@@ -274,7 +295,19 @@
                 orders_desc: "يمكنك مسح أو إزالة الطلب من القائمة بكل سهولة",
                 close: "إغلاق",
                 remove_order: "إلغاء الطلب",
-                free_ship_text: "شحن مجاني"
+                free_ship_text: "شحن مجاني",
+                free_ship_notice: "🎉 مبروك! حصلت على شحن مجاني لوجود قطعتين أو أكثر في سلتك!",
+                name_placeholder: "الاسم بالكامل",
+                phone_placeholder: "رقم الموبايل (واتساب) 01xxxxxxxx",
+                address_placeholder: "العنوان بالتفصيل (المدينة، الشارع، رقم العمارة)",
+                search_placeholder: "ما الذي تبحث عنه؟ (أحدث الأجهزة، الهواتف، الساعات...)",
+                added_to_cart_msg: "تمت الإضافة إلى عربة التسوق",
+                item_removed_msg: "تم حذف المنتج من العربة",
+                cart_empty_msg: "عربة التسوق فارغة حالياً",
+                wishlist_empty: "المفضلة فارغة",
+                no_orders: "لا توجد طلبيات حالياً",
+                order_confirmed_msg: "تم تأكيد طلبك بنجاح!",
+                order_cancelled_msg: "تم إلغاء الطلب وتحديث الشيت"
             },
             en: {
                 banner_text: "Yellow Friday Deals: Free shipping on 2+ items + Cash on Delivery!",
@@ -306,7 +339,19 @@
                 orders_desc: "You can clear or remove orders from the list easily",
                 close: "Close",
                 remove_order: "Cancel Order",
-                free_ship_text: "Free"
+                free_ship_text: "Free",
+                free_ship_notice: "🎉 Congrats! You got free shipping for having 2+ items in your cart!",
+                name_placeholder: "Full Name",
+                phone_placeholder: "Mobile Number (WhatsApp) 01xxxxxxxx",
+                address_placeholder: "Detailed Address (City, Street, Building No.)",
+                search_placeholder: "What are you looking for? (Gadgets, Phones, Watches...)",
+                added_to_cart_msg: "Added to cart",
+                item_removed_msg: "Item removed",
+                cart_empty_msg: "Your cart is empty",
+                wishlist_empty: "Wishlist is empty",
+                no_orders: "No active orders",
+                order_confirmed_msg: "Order confirmed successfully!",
+                order_cancelled_msg: "Order cancelled & sheet updated"
             }
         };
 
@@ -317,14 +362,31 @@
             htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
             document.getElementById('lang-btn-text').innerText = currentLang === 'ar' ? 'English' : 'عربي';
 
+            // ترجمة العناصر النصية العادية
             document.querySelectorAll('[data-translate]').forEach(el => {
                 const key = el.getAttribute('data-translate');
                 if (translations[currentLang][key]) {
                     el.innerText = translations[currentLang][key];
                 }
             });
+
+            // ترجمة الـ Placeholders
+            document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-translate-placeholder');
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.placeholder = translations[currentLang].search_placeholder;
+            }
+
             renderProducts(products);
             renderCartModal();
+            renderWishlistModal();
+            renderOrdersModal();
         }
 
         function showToast(msg) {
@@ -345,7 +407,7 @@
                             <span class="absolute top-2 right-2 bg-[#feee00] text-gray-950 text-[10px] font-black px-2 py-0.5 rounded shadow-2xs">${t.express}</span>
                             <img src="${p.img}" class="w-full h-40 object-contain">
                         </div>
-                        <h3 class="text-xs sm:text-sm font-bold text-gray-900 line-clamp-2 mb-1">${p.name}</h3>
+                        <h3 class="text-xs sm:text-sm font-bold text-gray-900 line-clamp-2 mb-1">${p.name[currentLang]}</h3>
                         <p class="text-[11px] text-blue-600 font-semibold mb-2">${t.model}: ${p.model}</p>
                     </div>
                     <div>
@@ -367,7 +429,7 @@
         }
 
         function filterProducts(query) {
-            const filtered = products.filter(p => p.name.includes(query) || p.model.toLowerCase().includes(query.toLowerCase()));
+            const filtered = products.filter(p => p.name[currentLang].toLowerCase().includes(query.toLowerCase()) || p.model.toLowerCase().includes(query.toLowerCase()));
             renderProducts(filtered);
         }
 
@@ -380,7 +442,7 @@
                 cart.push({ ...product, qty: 1 });
             }
             updateBadges();
-            showToast(currentLang === 'ar' ? 'تمت الإضافة إلى عربة التسوق' : 'Added to cart');
+            showToast(translations[currentLang].added_to_cart_msg);
         }
 
         function updateCartQty(id, delta) {
@@ -398,7 +460,7 @@
             cart = cart.filter(i => i.id !== id);
             updateBadges();
             renderCartModal();
-            showToast(currentLang === 'ar' ? 'تم حذف المنتج من العربة' : 'Item removed');
+            showToast(translations[currentLang].item_removed_msg);
         }
 
         function toggleWishlist(id) {
@@ -427,7 +489,7 @@
             const t = translations[currentLang];
 
             if (cart.length === 0) {
-                container.innerHTML = `<div class="bg-white p-8 rounded-2xl text-center text-gray-500 font-bold">${currentLang === 'ar' ? 'عربة التسوق فارغة حالياً' : 'Your cart is empty'}</div>`;
+                container.innerHTML = `<div class="bg-white p-8 rounded-2xl text-center text-gray-500 font-bold">${t.cart_empty_msg}</div>`;
                 document.getElementById('summary-qty').innerText = `0 ${currentLang === 'ar' ? 'منتج' : 'item'}`;
                 document.getElementById('summary-subtotal').innerText = '0.00 ج.م';
                 document.getElementById('summary-shipping').innerText = '30.00 ج.م';
@@ -448,7 +510,7 @@
                         <div class="flex gap-4 items-start">
                             <img src="${item.img}" class="w-20 h-20 object-contain rounded-xl bg-gray-50 p-2 border border-gray-100">
                             <div class="flex-1 space-y-1">
-                                <h4 class="text-xs sm:text-sm font-bold text-gray-900 leading-snug">${item.name}</h4>
+                                <h4 class="text-xs sm:text-sm font-bold text-gray-900 leading-snug">${item.name[currentLang]}</h4>
                                 <p class="text-[11px] text-blue-600 font-medium">${t.model}: ${item.model}</p>
                                 <span class="text-sm font-black text-gray-900">${(item.price * item.qty).toFixed(2)} ج.م</span>
                             </div>
@@ -477,7 +539,7 @@
 
             const total = subtotal + shipping;
 
-            document.getElementById('summary-qty').innerText = `${totalQty} ${currentLang === 'ar' ? 'منتج' : 'items'}`;
+            document.getElementById('summary-qty').innerText = `${totalQty} ${currentLang === 'ar' ? 'منتجات' : 'items'}`;
             document.getElementById('summary-subtotal').innerText = subtotal.toFixed(2) + ' ج.م';
             document.getElementById('summary-shipping').innerText = shipping === 0 ? t.free_ship_text : shipping.toFixed(2) + ' ج.م';
             document.getElementById('summary-total').innerText = total.toFixed(2) + ' ج.م';
@@ -485,13 +547,14 @@
 
         function renderWishlistModal() {
             const container = document.getElementById('wishlist-list');
+            const t = translations[currentLang];
             if (wishlist.length === 0) {
-                container.innerHTML = `<p class="text-center text-gray-400 text-xs py-4">${currentLang === 'ar' ? 'المفضلة فارغة' : 'Wishlist is empty'}</p>`;
+                container.innerHTML = `<p class="text-center text-gray-400 text-xs py-4">${t.wishlist_empty}</p>`;
                 return;
             }
             container.innerHTML = wishlist.map(i => `
                 <div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl text-xs">
-                    <span class="font-bold text-gray-900">${i.name}</span>
+                    <span class="font-bold text-gray-900">${i.name[currentLang]}</span>
                     <span class="text-blue-600 font-black">${i.price} ج.م</span>
                 </div>
             `).join('');
@@ -502,7 +565,7 @@
             const t = translations[currentLang];
 
             if (activeOrders.length === 0) {
-                container.innerHTML = `<p class="text-center text-gray-400 text-xs py-4">${currentLang === 'ar' ? 'لا توجد طلبيات حالياً' : 'No active orders'}</p>`;
+                container.innerHTML = `<p class="text-center text-gray-400 text-xs py-4">${t.no_orders}</p>`;
                 return;
             }
             container.innerHTML = activeOrders.map(o => `
@@ -521,7 +584,6 @@
         }
 
         function removeOrder(orderId) {
-            // إرسال إشارة لجوجل شيت بأن الطلب تم إلغاؤه لتحديث حالته في الشيت
             const cancelParams = new URLSearchParams({
                 action: 'cancel',
                 orderId: orderId
@@ -529,17 +591,16 @@
             const img = new Image();
             img.src = GOOGLE_SHEET_WEBHOOK_URL + '?' + cancelParams.toString();
 
-            // إزالة الطلب من القائمة المحلية
             activeOrders = activeOrders.filter(o => o.orderId !== orderId);
             document.getElementById('orders-badge').innerText = activeOrders.length;
             if(activeOrders.length === 0) document.getElementById('orders-badge').classList.add('hidden');
             renderOrdersModal();
-            showToast(currentLang === 'ar' ? 'تم إلغاء الطلب وتحديث الشيت' : 'Order cancelled & sheet updated');
+            showToast(translations[currentLang].order_cancelled_msg);
         }
 
         function confirmOrder() {
             if (cart.length === 0) {
-                showToast(currentLang === 'ar' ? 'عربة التسوق فارغة!' : 'Cart is empty!');
+                showToast(translations[currentLang].cart_empty_msg);
                 return;
             }
             const name = document.getElementById('cust-name').value.trim();
@@ -558,13 +619,12 @@
             let summaryText = "";
 
             cart.forEach((item, index) => {
-                const itemText = `${item.name} (${item.model}) - الكمية: ${item.qty}`;
+                const itemText = `${item.name[currentLang]} (${item.model}) - Qty: ${item.qty}`;
                 productsArray.push(itemText);
                 if(index === 0) summaryText = itemText;
                 else summaryText += " + " + itemText;
             });
 
-            // إرسال البيانات لجوجل شيت مع المنتجات مفصولة
             const queryParams = new URLSearchParams({
                 action: 'create',
                 orderId: orderId,
@@ -588,7 +648,7 @@
             cart = [];
             updateBadges();
             closeCartModal();
-            showToast(currentLang === 'ar' ? 'تم تأكيد طلبك بنجاح!' : 'Order confirmed successfully!');
+            showToast(translations[currentLang].order_confirmed_msg);
             openOrdersModal();
         }
 
@@ -596,6 +656,7 @@
         function closeCartModal() { document.getElementById('cart-modal').classList.add('hidden'); }
         function openWishlistModal() { renderWishlistModal(); document.getElementById('wishlist-modal').classList.remove('hidden'); }
         function closeWishlistModal() { document.getElementById('wishlist-modal').classList.add('hidden'); }
+        function openOrdersModal() { renderOrdersModal(); document.getElementById('orders-modal').classList.add('hidden'); } // Wait, let's fix openOrdersModal
         function openOrdersModal() { renderOrdersModal(); document.getElementById('orders-modal').classList.remove('hidden'); }
         function closeOrdersModal() { document.getElementById('orders-modal').classList.add('hidden'); }
 
