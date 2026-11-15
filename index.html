@@ -521,68 +521,26 @@
         }
 
         function removeOrder(orderId) {
-            activeOrders = activeOrders.filter(o => o.orderId !== orderId);
-            document.getElementById('orders-badge').innerText = activeOrders.length;
-            if(activeOrders.length === 0) document.getElementById('orders-badge').classList.add('hidden');
-            renderOrdersModal();
-            showToast(currentLang === 'ar' ? 'تم إزالة الطلب من القائمة' : 'Order removed from list');
-        }
-
-        function confirmOrder() {
-    if (cart.length === 0) {
-        showToast(currentLang === 'ar' ? 'عربة التسوق فارغة!' : 'Cart is empty!');
-        return;
-    }
-    const name = document.getElementById('cust-name').value.trim();
-    const phone = document.getElementById('cust-phone').value.trim();
-    const address = document.getElementById('cust-address').value.trim();
-
-    if (!name || !phone || !address) {
-        alert(currentLang === 'ar' ? 'يرجى إكمال بيانات الشحن (الاسم، الموبايل، العنوان)' : 'Please fill in shipping details');
-        return;
-    }
-
-    const orderId = 'TZ-' + Math.floor(100000 + Math.random() * 900000);
-    const totalAmount = document.getElementById('summary-total').innerText;
+    // 1. إرسال إشارة لجوجل شيت أن الطلب اتلغي
+    const cancelParams = new URLSearchParams({
+        action: 'cancel',
+        orderId: orderId
+    });
     
-    let productsArray = [];
-    let summaryText = "";
+    const img = new Image();
+    img.src = GOOGLE_SHEET_WEBHOOK_URL + '?' + cancelParams.toString();
 
-    cart.forEach((item, index) => {
-        const itemText = `${item.name} (${item.model}) - الكمية: ${item.qty}`;
-        productsArray.push(itemText);
-        if(index === 0) summaryText = itemText;
-        else summaryText += " + " + itemText;
-    });
-
-    const params = new URLSearchParams({
-        action: 'create',
-        orderId: orderId,
-        name: name,
-        phone: phone,
-        address: address,
-        products: productsArray.join("||"),
-        total: totalAmount
-    });
-
-    // إرسال البيانات عبر fetch للتأكد من وصولها للشيت
-    fetch(GOOGLE_SHEET_WEBHOOK_URL + '?' + params.toString(), {
-        method: 'GET',
-        mode: 'no-cors'
-    }).catch(err => console.log('Sheet error:', err));
-
-    const status = currentLang === 'ar' ? '✅ طلب مؤكد - جاري التجهيز' : '✅ Confirmed - Processing';
-    activeOrders.unshift({ orderId, summary: summaryText, total: totalAmount, status });
+    // 2. إزالة الطلب من القائمة المحلية للموقع
+    activeOrders = activeOrders.filter(o => o.orderId !== orderId);
     
     const badge = document.getElementById('orders-badge');
     badge.innerText = activeOrders.length;
-    badge.classList.remove('hidden');
-
-    cart = [];
-    updateBadges();
-    closeCartModal();
-    showToast(currentLang === 'ar' ? 'تم تأكيد طلبك بنجاح!' : 'Order confirmed successfully!');
-    openOrdersModal();
+    if(activeOrders.length === 0) {
+        badge.classList.add('hidden');
+    }
+    
+    renderOrdersModal();
+    showToast(currentLang === 'ar' ? 'تم إلغاء الطلب وتحديث الشيت' : 'Order cancelled and sheet updated');
 }
         function openCartModal() { renderCartModal(); document.getElementById('cart-modal').classList.remove('hidden'); }
         function closeCartModal() { document.getElementById('cart-modal').classList.add('hidden'); }
