@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- منع المتصفح من حفظ نسخة قديمة من الكود أو الصفحة -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <title>تيك زون | أحدث الإلكترونيات والمنتجات الذكية في مصر</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,9 +57,9 @@
                     <span id="cart-badge" class="bg-cyan-500 text-gray-950 text-[11px] font-black px-1.5 py-0.5 rounded-full">0</span>
                 </button>
 
-                <!-- زر حساب العميل وطلباته -->
+                <!-- زر طلبات الجلسة الحالية -->
                 <button onclick="openAccountModal()" class="relative bg-gray-800 hover:bg-gray-700 text-cyan-400 border border-cyan-500/30 text-xs sm:text-sm font-bold px-3 py-2.5 rounded-xl transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-user-check"></i>
+                    <i class="fa-solid fa-box-open"></i>
                     <span>طلباتي</span>
                     <span id="orders-badge" class="hidden bg-emerald-500 text-gray-950 text-[11px] font-black px-1.5 py-0.5 rounded-full">0</span>
                 </button>
@@ -78,7 +83,7 @@
                     أضف منتجاتك للسلة واستمتع بـ <span class="text-transparent bg-clip-text bg-gradient-to-l from-cyan-400 to-blue-500">شحن مجاني</span> ومعاينة قبل الدفع
                 </h1>
                 <p class="text-gray-300 text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
-                    اختر أكثر من منتج في سلة واحدة، عدّل الكميات أو احذف ما تشاء بكل سهولة، وتابع حالة طلباتك أو قم بإلغائها في أي وقت بضغطة زر.
+                    اختر أكثر من منتج في سلة واحدة، عدّل الكميات أو احذف ما تشاء بكل سهولة، وأكد طلبك ليصلك فوراً لباب البيت.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
                     <a href="#products" class="tech-gradient glow-effect text-white font-extrabold text-base px-8 py-4 rounded-2xl transition text-center">
@@ -198,9 +203,7 @@
                     <h3 class="text-sm font-bold text-cyan-400 flex items-center gap-2 border-b border-gray-800 pb-2.5">
                         <i class="fa-solid fa-basket-shopping"></i> المنتجات الموجودة في سلتك حالياً:
                     </h3>
-                    <div id="inline-cart-items" class="space-y-2.5">
-                        <!-- يتم تعبئتها بالجافاسكريبت -->
-                    </div>
+                    <div id="inline-cart-items" class="space-y-2.5"></div>
                 </div>
 
                 <div id="error-box" class="hidden p-4 rounded-xl bg-red-500/10 border border-red-500/40 text-red-400 text-sm font-bold flex items-center gap-2">
@@ -208,15 +211,15 @@
                     <span id="error-text"></span>
                 </div>
 
-                <form id="order-form" class="space-y-5">
+                <form id="order-form" autocomplete="off" class="space-y-5">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">الاسم بالكامل *</label>
-                            <input type="text" id="customer-name" required placeholder="مثال: أحمد محمود محمد" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white outline-none">
+                            <input type="text" id="customer-name" autocomplete="off" required placeholder="مثال: أحمد محمود محمد" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white outline-none">
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-2">رقم الموبايل (واتساب) *</label>
-                            <input type="tel" id="customer-phone" required placeholder="01xxxxxxxxx" maxlength="11" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white outline-none text-left" dir="ltr">
+                            <input type="tel" id="customer-phone" autocomplete="off" required placeholder="01xxxxxxxxx" maxlength="11" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white outline-none text-left" dir="ltr">
                         </div>
                     </div>
 
@@ -238,7 +241,7 @@
                         </div>
                         <div class="sm:col-span-2">
                             <label class="block text-sm font-bold text-gray-300 mb-2">العنوان بالتفصيل *</label>
-                            <input type="text" id="customer-address" required placeholder="المدينة / الشارع / رقم العمارة / علامة مميزة" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white outline-none">
+                            <input type="text" id="customer-address" autocomplete="off" required placeholder="المدينة / الشارع / رقم العمارة / علامة مميزة" class="w-full bg-gray-900 border border-gray-700 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-white outline-none">
                         </div>
                     </div>
 
@@ -276,7 +279,7 @@
         <span id="toast-msg">تمت الإضافة للسلة!</span>
     </div>
 
-    <!-- نافذة السلة الجانبية / المنبثقة -->
+    <!-- نافذة السلة -->
     <div id="cart-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="glass-card max-w-lg w-full rounded-3xl p-6 space-y-5 border border-cyan-500/40 shadow-2xl">
             <div class="flex justify-between items-center border-b border-gray-800 pb-3">
@@ -303,24 +306,24 @@
             </div>
             <h3 class="text-2xl font-black text-white">تم تسجيل طلبك بنجاح!</h3>
             <p class="text-gray-300 text-sm">
-                رقم طلبك هو <span id="modal-order-id" class="font-mono bg-gray-800 px-2 py-0.5 rounded text-cyan-400 font-bold"></span>. يمكنك متابعته أو إلغاؤه في أي وقت من قسم "طلباتي".
+                رقم طلبك هو <span id="modal-order-id" class="font-mono bg-gray-800 px-2 py-0.5 rounded text-cyan-400 font-bold"></span>. تم إرسال بيانات الطلب للإدارة بنجاح.
             </p>
             <div class="flex gap-3">
-                <button onclick="closeSuccessModal(); openAccountModal();" class="flex-1 tech-gradient text-white font-bold py-3.5 rounded-xl">عرض طلباتي</button>
+                <button onclick="closeSuccessModal(); openAccountModal();" class="flex-1 tech-gradient text-white font-bold py-3.5 rounded-xl">عرض طلب الجلسة</button>
                 <button onclick="closeSuccessModal()" class="flex-1 bg-gray-800 text-white font-bold py-3.5 rounded-xl">إغلاق</button>
             </div>
         </div>
     </div>
 
-    <!-- نافذة طلبات العميل + زر الإلغاء -->
+    <!-- نافذة طلبات الجلسة الحالية + زر الإلغاء -->
     <div id="account-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="glass-card max-w-lg w-full rounded-3xl p-6 sm:p-8 space-y-5 border border-cyan-500/40 shadow-2xl">
             <div class="flex justify-between items-center border-b border-gray-800 pb-4">
                 <div>
                     <h3 class="text-xl font-black text-white flex items-center gap-2">
-                        <i class="fa-solid fa-box-open text-cyan-400"></i> سجل طلباتك السابقة والحالية
+                        <i class="fa-solid fa-box-open text-cyan-400"></i> طلباتك في هذه الجلسة
                     </h3>
-                    <p id="account-user-greeting" class="text-xs text-gray-400 mt-1">يمكنك إلغاء أي طلب قيد التجهيز بضغطة زر</p>
+                    <p class="text-xs text-gray-400 mt-1">لا يتم تخزين أي بيانات على جهازك بعد إغلاق أو تحديث الصفحة</p>
                 </div>
                 <button onclick="closeAccountModal()" class="text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
             </div>
@@ -331,20 +334,31 @@
 
     <script>
         // ==========================================
-        // 1. إعدادات الرابط وحماية الدومين
+        // 1. رابط الويب هوك الخاص بك المحدث
         // ==========================================
         const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxNvb8aAahtsm6M9nKarz5yA4xsKFfyt9_a50Fw1VaXfc1ZDyZjBtyKQHTNZeggTiiHug/exec";
         
-        // اكتب هنا رابط موقعك على GitHub فقط لحمايته من النسخ (مثال: omarhossam.github.io)
-        // اتركه فارغاً "" مؤقتاً أثناء التجربة على جهازك، وبعد الرفع اكتب الدومين بتاعك
+        const APP_VERSION = "v1.2"; // قم بتغييره (مثلاً v1.3) كلما قمت برفع تحديث جديد لضمان وصوله للعملاء فوراً
         const ALLOWED_DOMAIN = ""; 
+
+        try {
+            localStorage.clear();
+            sessionStorage.clear();
+        } catch (e) {}
+
+        (function enforceFreshVersion() {
+            const url = new URL(window.location.href);
+            if (url.searchParams.get('v') !== APP_VERSION) {
+                url.searchParams.set('v', APP_VERSION);
+                window.location.replace(url.toString());
+            }
+        })();
 
         (function checkProtection() {
             if (ALLOWED_DOMAIN && window.location.hostname !== ALLOWED_DOMAIN && window.location.hostname !== "") {
                 document.body.innerHTML = "<div style='color:white;text-align:center;padding:50px;font-family:sans-serif;'><h1>⚠️ غير مصرح بتشغيل هذا المتجر على هذا النطاق</h1></div>";
                 throw new Error("Unauthorized Domain");
             }
-            // منع اختصارات فحص الكود الشائعة (F12, Ctrl+Shift+I, Ctrl+U)
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'u')) {
                     e.preventDefault();
@@ -353,14 +367,10 @@
         })();
 
         // ==========================================
-        // 2. إدارة سلة المشتريات (إضافة / تعديل / حذف)
+        // 2. إدارة السلة والطلبات (الجلسة الحالية فقط)
         // ==========================================
-        let cart = JSON.parse(localStorage.getItem('techzone_cart') || '[]');
-
-        function saveCart() {
-            localStorage.setItem('techzone_cart', JSON.stringify(cart));
-            renderCart();
-        }
+        let cart = [];
+        let sessionOrders = [];
 
         function showToast(msg, isDelete = false) {
             const toast = document.getElementById('toast');
@@ -378,7 +388,7 @@
             } else {
                 cart.push({ id, name, price, qty: 1 });
             }
-            saveCart();
+            renderCart();
             showToast(`تم إضافة "${name}" إلى السلة`);
         }
 
@@ -389,13 +399,13 @@
             if (item.qty <= 0) {
                 removeFromCart(id);
             } else {
-                saveCart();
+                renderCart();
             }
         }
 
         function removeFromCart(id) {
             cart = cart.filter(item => item.id !== id);
-            saveCart();
+            renderCart();
             showToast("تم حذف المنتج من السلة", true);
         }
 
@@ -425,7 +435,6 @@
             if (freeShipping) freeBadge.classList.remove('hidden');
             else freeBadge.classList.add('hidden');
 
-            // رسم المنتجات في الفورم وفي نافذة السلة
             const emptyHtml = `<p class="text-center text-gray-500 text-xs py-4">السلة فارغة حالياً.. اختر منتجاً من الأعلى لإضافته!</p>`;
             const itemsHtml = cart.map(item => `
                 <div class="flex items-center justify-between bg-gray-900 p-3 rounded-xl border border-gray-800 text-xs sm:text-sm">
@@ -449,11 +458,10 @@
         }
 
         // ==========================================
-        // 3. إرسال الطلب لجوجل شيت
+        // 3. إرسال الطلب لجوجل شيت الجديد
         // ==========================================
         function sendToGoogleSheet(paramsObj) {
             const params = new URLSearchParams(paramsObj);
-            // استخدام Image Beacon + Iframe لضمان الوصول في كل المتصفحات
             const img = new Image();
             img.src = GOOGLE_SHEET_WEBHOOK_URL + '?' + params.toString();
         }
@@ -491,7 +499,6 @@
             const orderId = 'TZ-' + Math.floor(100000 + Math.random() * 900000);
             const orderDate = new Date().toLocaleString("ar-EG", { timeZone: "Africa/Cairo" });
             
-            // تجميع أسماء المنتجات والكميات في نص واحد مرتب للشيت
             const productsSummary = cart.map(i => `${i.name} (×${i.qty})`).join(' + ');
             const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
 
@@ -507,10 +514,7 @@
                 total: totalText
             });
 
-            // حفظ الطلب في سجل العميل
-            localStorage.setItem('techzone_user_name', name);
-            let myOrders = JSON.parse(localStorage.getItem('techzone_orders') || '[]');
-            myOrders.unshift({
+            sessionOrders.unshift({
                 orderId: orderId,
                 product: productsSummary,
                 quantity: totalQty,
@@ -519,12 +523,11 @@
                 status: '✅ طلب مؤكد - جاري التجهيز',
                 cancelled: false
             });
-            localStorage.setItem('techzone_orders', JSON.stringify(myOrders));
             updateOrdersBadge();
 
-            // تفريغ السلة بعد نجاح الطلب
             cart = [];
-            saveCart();
+            renderCart();
+            document.getElementById('order-form').reset();
 
             document.getElementById('modal-order-id').innerText = orderId;
             document.getElementById('success-modal').classList.remove('hidden');
@@ -538,48 +541,36 @@
         function cancelOrder(orderId) {
             if (!confirm(`هل أنت متأكد من رغبتك في إلغاء الطلب رقم ${orderId}؟`)) return;
 
-            // 1. إرسال أمر الإلغاء لجوجل شيت ليتم تحديث الصف فوراً
             sendToGoogleSheet({
                 action: 'cancel',
                 orderId: orderId
             });
 
-            // 2. تحديث حالة الطلب في حساب العميل بالموقع
-            let myOrders = JSON.parse(localStorage.getItem('techzone_orders') || '[]');
-            const orderIndex = myOrders.findIndex(o => o.orderId === orderId);
+            const orderIndex = sessionOrders.findIndex(o => o.orderId === orderId);
             if (orderIndex !== -1) {
-                myOrders[orderIndex].status = '❌ تم إلغاء الطلب بناءً على رغبتك';
-                myOrders[orderIndex].cancelled = true;
-                localStorage.setItem('techzone_orders', JSON.stringify(myOrders));
+                sessionOrders[orderIndex].status = '❌ تم إلغاء الطلب بناءً على رغبتك';
+                sessionOrders[orderIndex].cancelled = true;
             }
 
-            // إعادة رسم نافذة الطلبات وإظهار رسالة تأكيد الإلغاء للعميل
             openAccountModal();
             showToast(`تم إلغاء الطلب ${orderId} وإبلاغ الإدارة بنجاح`, true);
         }
 
         function updateOrdersBadge() {
-            const myOrders = JSON.parse(localStorage.getItem('techzone_orders') || '[]');
             const badge = document.getElementById('orders-badge');
-            if (myOrders.length > 0) {
-                badge.innerText = myOrders.length;
+            if (sessionOrders.length > 0) {
+                badge.innerText = sessionOrders.length;
                 badge.classList.remove('hidden');
             }
         }
 
         function openAccountModal() {
             const ordersContainer = document.getElementById('user-orders-list');
-            const myOrders = JSON.parse(localStorage.getItem('techzone_orders') || '[]');
-            const savedName = localStorage.getItem('techzone_user_name');
-            
-            if (savedName) {
-                document.getElementById('account-user-greeting').innerText = `أهلاً بك يا ${savedName} — يمكنك متابعة أو إلغاء طلباتك من هنا`;
-            }
 
-            if (myOrders.length === 0) {
-                ordersContainer.innerHTML = `<p class="text-center text-gray-400 text-sm py-8">لا توجد طلبات مسجلة حتى الآن.</p>`;
+            if (sessionOrders.length === 0) {
+                ordersContainer.innerHTML = `<p class="text-center text-gray-400 text-sm py-8">لا توجد طلبات في هذه الجلسة حتى الآن.</p>`;
             } else {
-                ordersContainer.innerHTML = myOrders.map(order => `
+                ordersContainer.innerHTML = sessionOrders.map(order => `
                     <div class="bg-gray-900/95 p-4 rounded-2xl border ${order.cancelled ? 'border-red-500/30 opacity-75' : 'border-gray-800'} text-xs space-y-2.5">
                         <div class="flex justify-between items-center border-b border-gray-800 pb-2">
                             <span class="font-mono font-bold text-white bg-gray-800 px-2 py-0.5 rounded">${order.orderId}</span>
@@ -612,9 +603,6 @@
 
         window.onload = function() {
             renderCart();
-            updateOrdersBadge();
-            const savedName = localStorage.getItem('techzone_user_name');
-            if (savedName) document.getElementById('customer-name').value = savedName;
         };
     </script>
 </body>
